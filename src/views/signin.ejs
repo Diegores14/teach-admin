@@ -32,8 +32,14 @@
 					<li><a href="/#about">Acerca de</a></li>
 					<li><a href="/#team">Equipo</a></li>
 					<li><a href="/#contact">Contacto</a></li>
-					<li class="ingreso"><button type="button" class="btn btn-default">Ingreso</button></li>
-					<li class="registrar"><button type="button" class="btn btn-default">Regristrar</button></li>	
+					<li class="ingreso">
+						<form action="/signin" method="GET">
+							<button type="submit" class="btn btn-default">Ingreso</button></li>
+						</form>
+					<li class="registrar">
+						<form action="/signup" method="GET">
+							<button type="submit" class="btn btn-default">Regristrar</button></li>	
+						</form>
 				</ul>
 			</div>
 		</div>
