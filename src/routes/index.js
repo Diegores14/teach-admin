@@ -37,4 +37,7 @@ router.get('/profile', (req, res, next) => {
     res.render('profile');
 });
 
+router.get('/CreateCourse', (req, res,next) =>{
+    res.render('createCourses');
+});
 module.exports = router;
