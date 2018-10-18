@@ -4,7 +4,8 @@
   "description": "Pagina Web para los docentes en la cual van a poder llevar el registro de todas sus actividades.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "author": "Diego Alejandro Restrepo S. - Jesus David Mena - Sebastian Angel",
   "license": "ISC",
