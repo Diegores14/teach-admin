@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const Course = require('../models/course');
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', (req, res, next) => {
@@ -50,6 +51,14 @@ router.get('/logout', isAuthenticated, (req, res, next) => {
 });
 
 router.get('/CreateCourse', isAuthenticated, (req, res,next) =>{
+    res.render('createCourses');
+});
+
+router.post('/CreateCourse', isAuthenticated, async (req, res,next) =>{
+    const newCourse = new Course(req.body);
+    newCourse.username = req.user.username;
+    console.log(newCourse);
+    await newCourse.save();
     res.render('createCourses');
 });
 

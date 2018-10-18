@@ -16,9 +16,10 @@ app.set('views', path.join(__dirname, 'views'));    // aquí definimos la direcc
 app.engine('ejs', engine);                          // decimos cuale es el motor de archivos ejs.
 app.set('view engine', 'ejs');                      // guardamos el motor ejs.
 app.set('port', process.env.PORT || 3000);          // aquí definimos el puerto por el cual vamos a escuchar si el sistema operativo no nos da el puerto sera el 3000.
-app.use(express.static(__dirname + '/public'));     // aquí ponemos la direccion estatica de la carpeta public para poder importar el css y imagenes.
+
 
 // middlewares
+app.use(express.static(path.join(__dirname, 'public')));     // aquí ponemos la direccion estatica de la carpeta public para poder importar el css y imagenes.
 app.use(morgan('dev'));                             // aquí iniciamos morgan para que nos muestre las peticiones con las opciones de dev
 app.use(express.urlencoded({extended: true}));      // nos permite recibir los datos desde el cliente
 app.use(session({
