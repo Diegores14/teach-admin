@@ -15,6 +15,7 @@ body{
 	font-size: 0.8em;
 	border: 0;
 	text-transform: uppercase;
+	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand{
@@ -214,11 +215,8 @@ footer div.footer-copyright{
 	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
 }
 
-/*
 div.footer-copyright div.row{
-	padding: ;
 }
-*/
 
 footer h5.title{
 	font-size: 0.7em;
@@ -321,6 +319,7 @@ p.descReg{
 	color: #FFF;
 	padding: 1% 7%;
 	margin: 2% auto auto 75%;
+	text-transform: uppercase;
 	border-radius: 25px;
 	border: 0 solid #FFF;
 	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
@@ -330,6 +329,7 @@ p.descReg{
 	color: #FFF;
 	padding: 1% 7%;
 	margin: 2% 75% auto auto;
+	text-transform: uppercase;
 	border-radius: 25px;
 	border: 0 solid #FFF;
 	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
@@ -353,6 +353,7 @@ p.descReg{
 .col-md-12 .btn.m{
 	color: #FFF;
 	padding: 0.7% 7%;
+	text-transform: uppercase;
 	margin-top: 4%;
 	margin-left: 41.5%;
 	border-radius: 25px;
@@ -373,4 +374,22 @@ p.descReg{
 		border: 0 solid #FFF;
 		background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
 	}
+}
+
+
+section.confirmar{
+	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
+	padding: 5% 0;
+}
+
+section.confirmar p.descReg{
+	font-size: 1.5rem;
+	padding: 0;
+	margin: 0 auto 0 auto;
+}
+
+section.confirmar p.desc{
+	font-size: 1.8rem;
+	padding: 0;
+	margin: 5% auto 5% auto;
 }
