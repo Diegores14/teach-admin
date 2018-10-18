@@ -1,0 +1,60 @@
+
+section.curso{
+	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
+	padding: 4% 0;
+}
+
+section.curso .TextM{
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+section.curso .col-md-6 .btn.r{
+	color: #FFF;
+	padding: 1% auto;
+	margin: auto 10% auto 50%;
+	text-transform: uppercase;
+	border-radius: 26px;
+	border: 0 solid #FFF;
+	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+}
+
+section.curso .col-md-6 .btn.l{
+	color: #FFF;
+	padding: 1% auto;
+	margin: auto 30% auto 10%;
+	text-transform: uppercase;
+	border-radius: 26px;
+	border: 0 solid #FFF;
+	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+}
+
+@media (max-width: 1000px){
+
+	section.curso .col-sm-12 .btn.l{
+		color: #FFF;
+		padding: 1% auto;
+		margin: 2% 28%;
+		text-transform: uppercase;
+		border-radius: 26px;
+		border: 0 solid #FFF;
+		background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+	}
+
+	section.curso .col-sm-12 .btn.r{
+		color: #FFF;
+		padding: 1% auto;
+		margin: 2% 20%;
+		text-transform: uppercase;
+		border-radius: 26px;
+		border: 0 solid #FFF;
+		background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+	}
+
+	section.curso .TextM{
+		width: 60%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
