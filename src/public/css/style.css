@@ -213,11 +213,13 @@ footer div.footer-copyright{
 	padding: 0.3% 0;
 	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
 }
+
 /*
 div.footer-copyright div.row{
 	padding: ;
 }
 */
+
 footer h5.title{
 	font-size: 0.7em;
 	color: #FFF;
@@ -340,5 +342,35 @@ p.descReg{
 
 	.l{
 		margin: 2% 20% auto 20%;
+	}
+}
+
+/* login */
+.m{
+	margin: 2% 40% auto 40%;
+}
+
+.col-md-12 .btn.m{
+	color: #FFF;
+	padding: 0.7% 7%;
+	margin-top: 4%;
+	margin-left: 41.5%;
+	border-radius: 25px;
+	border: 0 solid #FFF;
+	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+}
+
+@media (max-width: 1000px){
+	.m{
+		margin: 2% 18% auto 25%;
+	}
+	.col-md-12 .btn.m{
+		color: #FFF;
+		padding: 0.7% 20%;
+		margin-top: 4%;
+		margin-left: 28%;
+		border-radius: 25px;
+		border: 0 solid #FFF;
+		background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
 	}
 }
