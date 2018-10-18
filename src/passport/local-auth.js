@@ -18,7 +18,7 @@ passport.use('local-signup', new LocalStrategy({                 // definir el m
 }, async (req, username, password, done) =>{
     const user = await User.findOne({username: username});
     if(user){
-        console.log(user);
+        // console.log(user);
         return done(null, false, req.flash('signupMessage', 'El usuario ya existe.'));
     }else{
         const newUser = new User();

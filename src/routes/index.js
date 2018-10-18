@@ -33,11 +33,29 @@ router.post('/signin', passport.authenticate('local-signin',{
     passReqToCallback: true
 }));
 
+router.use((req, res, next) => {
+    isAuthenticated(req, res, next);
+    next();
+});
+
 router.get('/profile', (req, res, next) => {
     res.render('profile');
+});
+
+router.get('/logout', (req, res, next) => {
+    req.logout();                                   // cierro la session
+    res.redirect('/');
 });
 
 router.get('/CreateCourse', (req, res,next) =>{
     res.render('createCourses');
 });
+
+function isAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+};
+
 module.exports = router;
