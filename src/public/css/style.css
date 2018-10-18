@@ -393,3 +393,26 @@ section.confirmar p.desc{
 	padding: 0;
 	margin: 5% auto 5% auto;
 }
+
+
+
+section.recuperar p.descRec{
+	font-size: 1.7rem;
+	padding: 0;
+	margin: 0 auto 0 auto;
+}
+
+section.recuperar .m{
+	margin: 2% 35% auto 35%;
+}
+
+section.recuperar .col-md-12 .btn.m{
+	color: #FFF;
+	padding: 0.5% 5%;
+	text-transform: uppercase;
+	margin-top: 4%;
+	margin-left: 44%;
+	border-radius: 25px;
+	border: 0 solid #FFF;
+	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+}
