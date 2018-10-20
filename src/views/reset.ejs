@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- CUSTOM css -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 	<!-- Navegacion bar -->
@@ -41,7 +41,7 @@
 
 
 	<section class="recuperar">
-		<div class="container">
+		<form class="container"  method="POST">
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Recuperar Contraseña</h2>
@@ -52,13 +52,13 @@
 				<div class="col-md-12">
 					<div class="form-group m">
 						<label>Nueva contraseña</label>
-          	<input type="text" class="form-control rgt" placeholder="Type here...">
+          	<input type="password" name="password"class="form-control rgt" placeholder="Type here..." autofocus=true required>
         	</div>
 				</div>
 				<div class="col-md-12">
 					<div class="form-group m">
 						<label>Confirmar nueva contraseña</label>
-          	<input type="number" class="form-control rgt" placeholder="Type here...">
+          	<input type="password" name="comfirm" class="form-control rgt" placeholder="Type here..." required>
         	</div>	
 				</div>
 			</div>
@@ -67,7 +67,7 @@
 					<button type="submit" class="btn btn-default m">Sing in</button>
 				</div>
 			</div>
-		</div>
+		</form>
 	</section>
 
 	<footer class="container-fluid">
