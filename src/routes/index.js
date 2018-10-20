@@ -62,6 +62,14 @@ router.post('/CreateCourse', isAuthenticated, async (req, res,next) =>{
     res.render('createCourses');
 });
 
+router.get('/forgot', (req, res, next) => {
+    res.render('forgot');
+});
+
+router.post('/forgot', (req, res, next) =>{
+    
+});
+
 function isAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         return next();
