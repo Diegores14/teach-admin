@@ -13,7 +13,9 @@ const userSchema = new Schema({
     pais: String,
     departamento: String,
     ciudad: String,
-    empresa: String
+    empresa: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 });
 
 // Encriptamos la constraseña
