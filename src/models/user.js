@@ -15,7 +15,10 @@ const userSchema = new Schema({
     ciudad: String,
     empresa: String,
     resetPasswordToken: String,
-    resetPasswordExpires: Date
+    resetPasswordExpires: Date,
+    resetAuthenticationToken: String,
+    resetAuthenticationExpires: Date,
+    isAuthenticatedEmail: {type: Boolean, default: false}
 });
 
 // Encriptamos la constraseña

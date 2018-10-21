@@ -1,6 +1,8 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;       // para diferentes tipos de autenticacion lo llama strategy
 const User = require('../models/user');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -33,7 +35,28 @@ passport.use('local-signup', new LocalStrategy({                 // definir el m
         newUser.departamento = "";
         newUser.ciudad = "";
         newUser.empresa = "";
+        
         // console.log(newUser);
+        var token = crypto.randomBytes(20).toString('hex');
+        newUser.resetAuthenticationToken = token;
+        newUser.resetAuthenticationExpires = Date.now() + 86400000; // 1 dia;
+        var smtTransport = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'pruebapageweb@gmail.com',
+                pass: 'Gyh$%789'
+            }
+        });
+        var mailOptions = {
+            to: newUser.email,
+            from: 'pruebapageweb@gmail.com',
+            subject: 'Comfirmar Cuenta',
+            text: 'You are receiving this because you (or someone else) have requested the confirmation  of email for your account.\n\n' +
+            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+            'http://' + req.headers.host + '/aithentication/' + token + '\n\n' +
+            'If you did not request this, please ignore this email.\n'
+        };
+        smtTransport.sendMail(mailOptions);
         await newUser.save();
         done(null, newUser);
     }

@@ -45,7 +45,7 @@ router.use((req, res, next) => {
 });
 */
 
-router.get('/profile', isAuthenticated, (req, res, next) => {
+router.get('/profile', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
     res.render('profile');
 });
 
@@ -183,6 +183,12 @@ router.post('/reset/:token', function(req, res) {
 });
 
 
+// este pedazo de aquí es para autenticar el correo de la persona
+
+router.get('/authentication', (req, res, next) => {
+    res.render('authenticate');
+});
+
 // Esto es para saber su esta autenticado algun usuario y de esta forma poder dejarlo acceder a la pagina.
 
 function isAuthenticated(req, res, next){
@@ -190,6 +196,15 @@ function isAuthenticated(req, res, next){
         return next();
     }
     res.redirect('/');
+};
+
+// Esto es para saber si el Usuario ya autentico el correo
+
+function isAuthenticatedEmail(req, res, next){
+    if(req.user.isAuthenticatedEmail){
+        return next();
+    }
+    res.redirect('/authentication');
 };
 
 module.exports = router;
