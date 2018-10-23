@@ -2,6 +2,47 @@ body{
 	background-color: #565656;
 }
 
+.navbar-nav.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+.dropdown-menu{
+	background-color: #565656;
+}
+
+.dropdown .photo{
+	max-width: 20px;
+	border-radius: 50%;
+	margin: 0%;
+}
+.arr{
+  background: -webkit-linear-gradient(left,#76323F, #C09F80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-login{
+  width: 305px;
+  padding: 10px;
+  padding-bottom: 0px;
+}
+
+.navbar-login-session{
+  padding: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.icon-size{
+  font-size: 10rem;
+}
+
+small{
+	font-size: 0.8rem;
+}
+
 .navbar{
 	margin-bottom: 0;
 	border-radius: 0;
@@ -22,6 +63,11 @@ body{
 	float: left;
 	max-height: 55px;
 	padding: 0 15px 5px;
+}
+
+.navbar-inverse .navbar-nav .open a:hover, .navbar-inverse .navbar-nav .open a:focus{
+	color: #FFF;
+	background-color: #565656;
 }
 
 .navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover{
@@ -412,6 +458,26 @@ section.recuperar .col-md-12 .btn.m{
 	text-transform: uppercase;
 	margin-top: 4%;
 	margin-left: 44%;
+	border-radius: 25px;
+	border: 0 solid #FFF;
+	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+}
+
+section.Olvidar .m{
+	margin: 2% 35% auto 35%;
+}
+
+section.Olvidar .col-md-12 .rgt{
+	padding: 3.5% 1%;
+	font-size: 2rem;
+}
+
+section.Olvidar .col-md-12 .btn.m{
+	color: #FFF;
+	padding: 0.5% 5%;
+	text-transform: uppercase;
+	margin-top: 4%;
+	margin-left: 41%;
 	border-radius: 25px;
 	border: 0 solid #FFF;
 	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
