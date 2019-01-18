@@ -54,7 +54,7 @@ router.get('/logout', isAuthenticated, (req, res, next) => {
     res.redirect('/');
 });
 
-router.get('/CreateCourse', isAuthenticated, (req, res,next) =>{
+router.get('/CreateCourse', isAuthenticated, isAuthenticatedEmail, (req, res,next) =>{
     res.render('createCourses');
 });
 
@@ -187,6 +187,22 @@ router.post('/reset/:token', function(req, res) {
 
 router.get('/authentication', (req, res, next) => {
     res.render('authenticate');
+});
+
+// Aquí se confirma la cuenta por medio del enlace que se envia al correo
+
+router.get('/comfirmation/:token', (req, res,next) => {
+    User.findOne({resetAuthenticationToken : req.params.token, resetAuthenticationExpires: { $gt: Date.now() } }, (err, user) => {
+        if(!user) {
+            req.flash('error', 'Password reset token is invalid or has expired.');
+            return res.redirect('/');
+        }
+        console.log('hello')
+        user.isAuthenticatedEmail = true;
+        user.save((err) => {
+            res.redirect('/profile');
+        });
+    });
 });
 
 // Esto es para saber su esta autenticado algun usuario y de esta forma poder dejarlo acceder a la pagina.

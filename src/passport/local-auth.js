@@ -53,7 +53,7 @@ passport.use('local-signup', new LocalStrategy({                 // definir el m
             subject: 'Comfirmar Cuenta',
             text: 'You are receiving this because you (or someone else) have requested the confirmation  of email for your account.\n\n' +
             'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-            'http://' + req.headers.host + '/aithentication/' + token + '\n\n' +
+            'http://' + req.headers.host + '/comfirmation/' + token + '\n\n' +
             'If you did not request this, please ignore this email.\n'
         };
         smtTransport.sendMail(mailOptions);
