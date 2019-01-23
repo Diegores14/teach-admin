@@ -19,7 +19,8 @@ const userSchema = new Schema({
     resetPasswordExpires: Date,
     resetAuthenticationToken: String,
     resetAuthenticationExpires: Date,
-    isAuthenticatedEmail: {type: Boolean, default: false}
+    isAuthenticatedEmail: {type: Boolean, default: false},
+    photo: String                   // URL Where I'm going to store the image
 });
 
 // Encriptamos la constraseña

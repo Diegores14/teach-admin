@@ -6,5 +6,10 @@ const studentSchema = new Schema({
     lastName: String,
     Codigo: String,
     email: String,
-    image
+    birthdate: Date,
+    country: String,
+    city: String,
+    courses: [ ObjectId ],
+    School: String,
+    photo: String                   // URL Where I'm going to store the image
 });
