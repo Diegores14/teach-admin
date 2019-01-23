@@ -14,6 +14,7 @@ const userSchema = new Schema({
     departamento: String,
     ciudad: String,
     empresa: String,
+    courses: [ ObjectId ],
     resetPasswordToken: String,
     resetPasswordExpires: Date,
     resetAuthenticationToken: String,
