@@ -1,0 +1,44 @@
+<%- layout('layouts/session.ejs') %>
+	<!--
+	<pre>
+		<%= Courses %>
+	</pre>
+	-->
+	<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Cursos</h2>
+					<p class="descReg">Crear nuevo curso</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="curso">
+		<% for(var i = 0; i <= (Courses.length % 3); i++){ %>
+			<div class="row">
+				<% for(var j = 0; j < 3; j++){ %>
+					<div class="col-sm-4">  
+						<div class="tarcurso">
+							<div class="row container-fluid">
+								<div class="col-sm-12">
+									<a href="#"><img src="img/dots.png" alt="" class="dot"></a>
+								</div>
+							</div>
+							<div class="row container-fluid">
+								<div class="col-sm-12">
+									<p class="cod">Codigo asignatura</p>
+								</div>
+							</div>
+							<div class="row container-fluid">
+								<div class="col-sm-12">
+									<p class="name">Nombre asignatura</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% } %>
+			</div>
+		<% } %>
+	</section>
