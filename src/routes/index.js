@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const passport = require('passport');
 const Course = require('../models/course');
 const User = require('../models/user');
@@ -9,6 +10,8 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const async = require('async');
 const CoEsCi = require('country-state-city');
+const multer  = require('multer');
+const uploadDocent = multer({ dest: path.resolve('src/public/img/Users/') });
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
@@ -70,9 +73,9 @@ router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req,res,
     res.render('CompletarRegistro', {pais: data[0], estado: data[1], ciudad: data[2],user});
 });
 
-router.post('/completarUsuario', isAuthenticated, (req, res, next) => {
+router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'), (req, res, next) => {
     console.log(req.body);
-    res.render('createCourses');
+    res.render('profile');
 });
 
 router.get('/logout', isAuthenticated, (req, res, next) => {
