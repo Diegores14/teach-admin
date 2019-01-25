@@ -70,6 +70,11 @@ router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req,res,
     res.render('CompletarRegistro', {pais: data[0], estado: data[1], ciudad: data[2],user});
 });
 
+router.post('/completarUsuario', isAuthenticated, (req, res, next) => {
+    console.log(req.body);
+    res.render('createCourses');
+});
+
 router.get('/logout', isAuthenticated, (req, res, next) => {
     req.logout();                                   // cierro la session
     res.redirect('/');

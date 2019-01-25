@@ -2,7 +2,6 @@
 
 <script type="text/javascript">
   	function setDep(id){
-  		try{
   			if(estado){	
 				var idCountry = id[id.selectedIndex].id;
 				var depar = document.getElementById('Estate');
@@ -16,20 +15,13 @@
 					}
 				}
 			}
-	  	}
-	  	catch(err){
-
-	  	}
 	}
 
 	function setCit(id) {
-		try{
 		var idEstate = id[id.selectedIndex].id;
 		var city = document.getElementById('City');
 		var cit = <%- JSON.stringify(ciudad) %>;
-		}catch(err){
-
-		}
+		
 		/***
 		for (var i = 0; i < Object.keys(cit).length;i++){
 			if(cit[i][2] == idEstate){
@@ -55,75 +47,77 @@
 
 	
 	<section>
-		<form class="container" action="/completarUsuario" method="POST" enctype="multipart/form-data">
+		<div class="container">
 			<div class="row container-fluid">
 				<div class="col-md-12 text-center">
 					<img src="img/David.jpg" class="photoPro"> 
 				</div>
 			</div>
 			<div class="row" style="margin: 0 35%">
-				<div class="col-md-12">
-					<input type="file" name="avatar" />
-				</div>
+				<form class="col-md-12" action="/completarUsuario" method="POST" enctype="multipart/form-data">
+					<input type="file" name="avatar"  accept="image/png, image/jpeg">
+					<button type="submit">subir</button>
+				</form>
 			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="form-group r">
-						<label>Fecha de Nacimiento</label>
-          	<input type="date" class="form-control rgt" name="FechaNacimiento" placeholder="Type here..." required>
-        	</div>
+			<form action="/completarUsuario" method="POST">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group r">
+							<label>Fecha de Nacimiento</label>
+				<input type="date" class="form-control rgt" name="FechaNacimiento" placeholder="Type here..." required>
 				</div>
-				<div class="col-md-6 col-sm-12">
-					<div class="form-group l">
-						<label>Cedula</label>
-          	<input type="number" class="form-control rgt" name="Cedula" placeholder="Type here...">
-        	</div>	
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group l">
+							<label>Cedula</label>
+				<input type="number" class="form-control rgt" name="Cedula" placeholder="Type here...">
+				</div>	
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="form-group r">
-          				<label>Pais</label>
-          				<select name="Country" class="form-control" id="Country" onchange="setDep(this)">
-          					<% for(var i=0; i < Object.keys(pais).length; i++){ %>
-          						<option id="<%= pais[i][1]%>" > <%= pais[i][0]%></option>
-          					<% } %> 
-			          	</select>
-        			</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group r">
+							<label>Pais</label>
+							<select name="Country" class="form-control" id="Country" onchange="setDep(this)">
+								<% for(var i=0; i < Object.keys(pais).length; i++){ %>
+									<option id="<%= pais[i][1]%>" > <%= pais[i][0]%></option>
+								<% } %> 
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group l">
+							<label>Departamento</label>
+							<select name="Estate" class="form-control" id="Estate" onchange="setCit(this)">
+							</select>
+						</div>	
+					</div>
 				</div>
-				<div class="col-md-6 col-sm-12">
-					<div class="form-group l">
-          				<label>Departamento</label>
-          				<select name="Estate" class="form-control" id="Estate" onchange="setCit(this)">
-			          	</select>
-        			</div>	
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="form-group r">
-          				<label>Ciudad</label>
-          				<select name="City" class="form-control" id="City">
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group r">
+							<label>Ciudad</label>
+							<select name="City" class="form-control" id="City">
 
-			          	</select>
-        			</div>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group l">
+							<label>Empresa</label>
+							<input type="text" class="form-control rgt" name="Empresa" minlength="8" placeholder="Type here..." required>
+						</div>	
+					</div>
 				</div>
-				<div class="col-md-6 col-sm-12">
-					<div class="form-group l">
-			          	<label>Empresa</label>
-			          	<input type="text" class="form-control rgt" name="Empresa" minlength="8" placeholder="Type here..." required>
-		        	</div>	
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<button type="submit" class="btn btn-default r">Completar</button>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<button type="submit" class="btn btn-default l" formaction="/" formmethod="GET">Cancelar</button>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<button type="submit" class="btn btn-default r">Completar</button>
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<button type="submit" class="btn btn-default l" formaction="/" formmethod="GET">Cancelar</button>
-				</div>
-			</div>
-
+			</form>
 			<!--  Necesitamos mirar bien esta parte para que no se vaya a darñar el responsive-->
 			<% if(signupMessage.length > 0) { %>
 				<div class="row">
@@ -134,5 +128,5 @@
 					</div>
 				</div>
 			<% } %>
-    	</form>
+			</div>
 	</section>
