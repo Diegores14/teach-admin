@@ -74,7 +74,13 @@ router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req,res,
 });
 
 router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'), (req, res, next) => {
-    console.log(req.body);
+    if(req.file)
+        req.body["photo"] = req.file.filename;
+    req.body.date = new Date(req.body.date);
+    User.findByIdAndUpdate(req.user._id, req.body, (err, doc) => {
+        if(err)
+            console.log(err);
+    } );
     res.render('profile');
 });
 
