@@ -10,6 +10,36 @@ section.curso .TextM{
 	margin-right: auto;
 }
 
+p.cod{
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 10px;
+	text-transform: uppercase;
+
+	color: #F27A54;
+}
+
+div.tarcurso{
+	background: #3C444D;
+	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
+	border-radius: 6px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 10%;
+}
+
+section.curso p.name{
+	font-family: Zilla Slab;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 28px;
+	font-size: 24px;
+
+	color: #FFFFFF;
+}
+
 section.curso .col-md-6 .btn.r{
 	color: #FFF;
 	padding: 1% auto;
