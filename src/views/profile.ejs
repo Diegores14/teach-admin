@@ -1,3 +1,53 @@
 <%- layout('layouts/session.ejs') %>
 
-<h1>Profile</h1>
+	<section>
+		<div class="row">
+			<div id="perfilDocente" style="margin-left: 25%; margin-right: 25%;">
+				<div class="row container-fluid">
+					<div class="col-md-12 text-center">
+						<img src="img/David.jpg" class="photoPerfil shadow-lg"> 
+					</div>
+				</div>	
+				<div class="row container-fluid ">
+					<div class="col-md-12 text-center" >
+						<p class="docente">Docente</p>
+					</div>
+				</div>
+				<div class="row container-fluid" >
+					<div class="col-md-12 text-center" >
+						<p class="NamePerfil"> <%= user.firstName%> <%= user.lastName%></p>
+					</div>
+				</div>
+				<div class="row container-fluid" style="margin-bottom: 0; margin-top: 0;">
+					<div class="col-md-12 text-center" style="margin-bottom: 0; margin-top: 0;">
+						<p class="CiudadPerfil"><%= user.ciudad%>, <%= user.pais%></p>
+					</div>
+				</div>
+				<div class="row container-fluid " style="margin-bottom: 0; margin-top: 0;">
+					<div class="col-md-12 text-center" style="margin-bottom: 0; margin-top: 0;">
+						<p class="Cursos">Cursos</p>
+					</div>
+				</div>
+				<div class="row container-fluid">
+					<div class="col-md-12 text-center">
+						<p class="CursosName">Nombre de cursos</p>
+					</div>
+				</div>
+				<div class="row container-fluid">
+					<div class="col-md-12 text-center">
+						<p class="documentoPerfil">N° de documento: <%= user.document%></p>
+					</div>
+				</div>
+				<div class="row container-fluid ">
+					<div class="col-md-12 text-center">
+						<p class="Estado">Estado: <%= user.departamento%></p>
+					</div>
+				</div>
+				<div class="row container-fluid">
+					<div class="col-md-12 text-center">
+						<p class="Fecha">Fecha de nacimiento: <%= user.date%></p>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</section>
