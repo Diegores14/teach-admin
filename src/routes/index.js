@@ -8,6 +8,7 @@ const User = require('../models/user');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const async = require('async');
+const CoEsCi = require('country-state-city');
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', (req, res, next) => {
@@ -46,7 +47,27 @@ router.use((req, res, next) => {
 */
 
 router.get('/profile', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
-    res.render('profile');
+    const user = req.user;
+    res.render('profile',{user});
+});
+
+router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req,res,next)=>{
+    const data = [[], [], []];
+    const country = CoEsCi.getAllCountries();
+    country.forEach( (item) => {
+        data[0].push([item.name, item.id]);
+        const estate = CoEsCi.getStatesOfCountry(item.id);
+        estate.forEach((state)=>{
+            data[1].push([state.name, state.id, state.country_id]);
+            const city = CoEsCi.getCitiesOfState(state.id);
+            city.forEach((city)=>{
+                data[2].push([city.name, city.id, city.state_id]);
+            });
+        });
+    });
+    const user = req.user;
+    console.log(data[1]);
+    res.render('CompletarRegistro', {pais: data[0], estado: data[1], ciudad: data[2],user});
 });
 
 router.get('/logout', isAuthenticated, (req, res, next) => {

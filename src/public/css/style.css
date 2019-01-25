@@ -205,6 +205,12 @@ img.photo{
 	margin-top: 15%;
 }
 
+img.photoPro{
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+}
+
 
 .col-md-12 p.Descripcion{
 	font-family: 'Montserrat', sans-serif;
