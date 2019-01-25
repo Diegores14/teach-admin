@@ -1,5 +1,47 @@
 <%- layout('layouts/session.ejs') %>
 
+<script type="text/javascript">
+  	function setDep(id){
+  		try{
+  			if(estado){	
+				var idCountry = id[id.selectedIndex].id;
+				var depar = document.getElementById('Estate');
+				var dep = <%- JSON.stringify(estado) %>;
+				for (var i = 0; i < Object.keys(dep).length;i++){
+					if(dep[i][2] == idCountry){
+						var opt = document.createElement('option');
+						opt.id = dep[i][1];
+						opt.innerHTML = dep[i][0];
+						depar.appendChild(opt);
+					}
+				}
+			}
+	  	}
+	  	catch(err){
+
+	  	}
+	}
+
+	function setCit(id) {
+		try{
+		var idEstate = id[id.selectedIndex].id;
+		var city = document.getElementById('City');
+		var cit = <%- JSON.stringify(ciudad) %>;
+		}catch(err){
+
+		}
+		/***
+		for (var i = 0; i < Object.keys(cit).length;i++){
+			if(cit[i][2] == idEstate){
+				var opt = document.createElement('option');
+				opt.value = cit[i][1];
+				opt.innerHTML = cit[i][0];
+				city.appendChild(opt);
+			}
+		}***/
+	}
+  </script>
+
 <section class="curso">
 		<div class="container">
 			<div class="row" style="text-align:center;">
