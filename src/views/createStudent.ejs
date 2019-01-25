@@ -1,0 +1,75 @@
+<%- layout('layouts/session.ejs') %>
+
+<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Crear estudiantes</h2>
+					<p class="descReg">A continuación ingrese los datos del estudiante que desea ingresar</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<section>
+		<form class="container" action="/completarUsuario" method="POST" enctype="multipart/form-data">
+			<div class="row container-fluid">
+				<div class="col-md-12 text-center">
+					<img src="img/David.jpg" class="photoPro"> 
+				</div>
+			</div>
+			<div class="row" style="margin: 0 35%">
+				<div class="col-md-12">
+					<input type="file" name="avatar" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+						<label>Nombre</label>
+          				<input type="text" class="form-control rgt" name="NombreEstudiante" placeholder="Type here..." required>
+        			</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+						<label>Numero de Identificacion</label>
+          				<input type="number" class="form-control rgt" name="identificacion" placeholder="Type here...">
+        			</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+						<label>Apellido</label>
+          				<input type="text" class="form-control rgt" name="Apellido" placeholder="Type here..." required>
+        			</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+						<label>Correo</label>
+          				<input type="email" class="form-control rgt" name="Correo" placeholder="Type here...">
+        			</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default r">Crear Estudiante</button>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default l" formaction="/" formmethod="GET">Cancelar</button>
+				</div>
+			</div>
+
+			<!--  Necesitamos mirar bien esta parte para que no se vaya a darñar el responsive-->
+			<% if(signupMessage.length > 0) { %>
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group r">
+							<label><%= signupMessage %></label>
+						</div>
+					</div>
+				</div>
+			<% } %>
+    	</form>
+	</section>
