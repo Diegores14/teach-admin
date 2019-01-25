@@ -19,7 +19,9 @@ passport.use('local-signup', new LocalStrategy({                 // definir el m
     passReqToCallback: true
 }, async (req, username, password, done) =>{
     const user = await User.findOne({username: username});
-    if(user){
+    const user1 = await User.findOne({document: req.body.document});
+    const user2 = await User.findOne({email: req.body.email});
+    if(user || user1 || user2){
         // console.log(user);
         return done(null, false, req.flash('signupMessage', 'El usuario ya existe.'));
     }else{

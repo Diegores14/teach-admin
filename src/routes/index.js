@@ -1,4 +1,4 @@
-// aquí vamos a tener el controlador de todas las rutas como de funcionar al momento de un GET y POST
+// aquí vamos a tener el controlador de todas las rutas como debe funcionar al momento de un GET y POST
 
 const express = require('express');
 const router = express.Router();
@@ -10,8 +10,8 @@ const crypto = require('crypto');
 const async = require('async');
 
 // GET para la dirección raiz muestra la pagina principal
-router.get('/', (req, res, next) => {
-    res.render('index');
+router.get('/', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
+    res.render('profile');
 });
 
 // GET para Obtener el signup (registro)
@@ -54,16 +54,36 @@ router.get('/logout', isAuthenticated, (req, res, next) => {
     res.redirect('/');
 });
 
+// Course
+router.get('/courses', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
+    // cargar los cursos, falta poner eso
+    User.findById(req.user._id, (err, user) => {
+        if(!err) {
+            let data = []
+            user.courses.forEach( (item) => {
+                data.push(promiseFindCourse(item));
+            });
+            Promise.all(data).then( (results) => {
+                console.log(results);
+                res.render('Courses', {Courses: results});
+            });
+        }
+    });
+});
+
 router.get('/CreateCourse', isAuthenticated, isAuthenticatedEmail, (req, res,next) =>{
     res.render('createCourses');
 });
 
+// create Course and Upate User
 router.post('/CreateCourse', isAuthenticated, async (req, res,next) =>{
     const newCourse = new Course(req.body);
-    newCourse.username = req.user.username;
-    console.log(newCourse);
     await newCourse.save();
-    res.render('createCourses');
+    User.findOneAndUpdate({_id: req.user._id}, {$push: {courses: newCourse._id} }, (err, doc) => { // hay que verificar si hay error
+        console.log(doc);
+        res.render('createCourses');
+    });
+    
 });
 
 
@@ -211,7 +231,7 @@ function isAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect('/');
+    res.render('index');
 };
 
 // Esto es para saber si el Usuario ya autentico el correo
@@ -221,6 +241,14 @@ function isAuthenticatedEmail(req, res, next){
         return next();
     }
     res.redirect('/authentication');
+};
+
+function promiseFindCourse( id) {
+    return new Promise( (fulfill, reject) =>  {
+        Course.findById(id, (err, course) => {
+            fulfill(course);
+        });
+    });
 };
 
 module.exports = router;
