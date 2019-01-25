@@ -1,9 +1,5 @@
 <%- layout('layouts/session.ejs') %>
-	<!--
-	<pre>
-		<%= Courses %>
-	</pre>
-	-->
+	
 	<section class="curso">
 		<div class="container">
 			<div class="row" style="text-align:center;">
@@ -16,9 +12,9 @@
 	</section>
 
 	<section class="curso">
-		<% for(var i = 0; i <= (Courses.length % 3); i++){ %>
+		<% for(var i = 0; i <= Courses.length/3 ; i++){ %>
 			<div class="row">
-				<% for(var j = 0; j < 3; j++){ %>
+				<% for(var j = 0; j<3 && j + i*3 < Courses.length; j++){ %>
 					<div class="col-sm-4">  
 						<div class="tarcurso">
 							<div class="row container-fluid">
@@ -28,12 +24,12 @@
 							</div>
 							<div class="row container-fluid">
 								<div class="col-sm-12">
-									<p class="cod">Codigo asignatura</p>
+									<p class="cod"> <%= Courses[i*3 + j].cod %> </p>
 								</div>
 							</div>
 							<div class="row container-fluid">
 								<div class="col-sm-12">
-									<p class="name">Nombre asignatura</p>
+									<p class="name"> <%= Courses[i*3 + j].name %> </p>
 								</div>
 							</div>
 						</div>
