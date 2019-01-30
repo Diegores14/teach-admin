@@ -12,6 +12,7 @@ const async = require('async');
 const CoEsCi = require('country-state-city');
 const multer  = require('multer');
 const uploadDocent = multer({ dest: path.resolve('src/public/img/Users/') });
+const fs = require('fs');
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
@@ -74,8 +75,10 @@ router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req,res,
 });
 
 router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'), (req, res, next) => {
-    if(req.file)
-        req.body["photo"] = req.file.filename;
+    if(req.file) {
+        fs.renameSync(path.join(req.file.destination,req.file.filename),path.join(req.file.destination,req.file.filename)+'.jpeg');
+        req.body["photo"] = req.file.filename +'.jpeg';
+    }
     req.body.date = new Date(req.body.date);
     User.findByIdAndUpdate(req.user._id, req.body, (err, doc) => {
         if(err)
