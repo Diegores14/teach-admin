@@ -63,20 +63,20 @@
 			</div>
 			<div class="row" style="margin: 0 35%">
 				<div class="col-md-12">
-					<input type="file" name="avatar" />
+					<input type="file" name="avatar" accept=".jpg" >
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 						<label>Fecha de Nacimiento</label>
-          	<input type="date" class="form-control rgt" name="FechaNacimiento" placeholder="Type here..." required>
+          	<input type="date" class="form-control rgt" name="date" placeholder="Type here..." required>
         	</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 						<label>Cedula</label>
-          	<input type="number" class="form-control rgt" name="Cedula" placeholder="Type here...">
+          	<input type="number" class="form-control rgt" name="document" placeholder="Type here...">
         	</div>	
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Pais</label>
-          				<select name="Country" class="form-control" id="Country" onchange="setDep(this)">
+          				<select name="pais" class="form-control" id="Country" onchange="setDep(this)">
           					<% for(var i=0; i < Object.keys(pais).length; i++){ %>
           						<option id="<%= pais[i][1]%>" > <%= pais[i][0]%></option>
           					<% } %> 
@@ -94,7 +94,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
           				<label>Departamento</label>
-          				<select name="Estate" class="form-control" id="Estate" onchange="setCit(this)">
+          				<select name="departamento" class="form-control" id="Estate" onchange="setCit(this)">
 			          	</select>
         			</div>	
 				</div>
@@ -103,7 +103,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Ciudad</label>
-          				<select name="City" class="form-control" id="City">
+          				<select name="ciudad" class="form-control" id="City">
 
 			          	</select>
         			</div>
@@ -111,7 +111,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 			          	<label>Empresa</label>
-			          	<input type="text" class="form-control rgt" name="Empresa" minlength="8" placeholder="Type here..." required>
+			          	<input type="text" class="form-control rgt" name="empresa" minlength="8" placeholder="Type here..." required>
 		        	</div>	
 				</div>
 			</div>
