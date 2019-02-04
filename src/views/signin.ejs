@@ -18,13 +18,13 @@
 				<div class="col-md-12">
 					<div class="form-group m">
 						<label>Cedula</label>
-          	<input type="number" class="form-control rgt" name="document" placeholder="Type here..." required>
+          	<input class="form-control rgt number" name="document" placeholder="Type here..." required>
         	</div>	
 				</div>
 				<div class="col-md-12">
 					<div class="form-group m">
           	<label>Contraseña</label>
-          	<input type="password" class="form-control rgt" name="password" placeholder="Type here..." minlength="8" required>
+          	<input id = "password" type="password" onpaste = "return false" onut = "return false" oncopy = "return false" class="form-control rgt password" name="password" placeholder="Type here..." minlength="8" required>
         	</div>
 				</div>
 			</div>
@@ -35,3 +35,5 @@
 			</div>
 		</form>
 	</section>
+	<script type="text/javascript" src = "/scripts/passwordAutentication.js"></script>
+	<script type="text/javascript" src = "/scripts/signin.js"></script>
