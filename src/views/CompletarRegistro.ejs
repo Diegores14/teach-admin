@@ -58,12 +58,15 @@
 		<form class="container" action="/completarUsuario" method="POST" enctype="multipart/form-data">
 			<div class="row container-fluid">
 				<div class="col-md-12 text-center">
-					<img src="img/David.jpg" class="photoPro"> 
+					<img src="img/Users/<%= user.photo%>" class="photoPro"> 
 				</div>
 			</div>
 			<div class="row" style="margin: 0 35%">
 				<div class="col-md-12">
-					<input type="file" name="avatar" accept=".jpg" >
+					<div class="upload-btn-wrapper">
+					  <button class="btn">Cargar foto de perfil</button>
+					  <input type="file" name="avatar" accept=".jpg"/>
+					</div>
 				</div>
 			</div>
 			<div class="row">

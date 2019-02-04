@@ -1,0 +1,26 @@
+.upload-btn-wrapper {
+	overflow: hidden;
+	margin-top: 10%;
+	margin-left: 17%;
+}
+
+.btn {
+  	background: #565656;
+  	color: #FFF;
+  	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+	border: 0 solid #FFF;
+	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+	margin: auto;
+	padding: 4% 5%;
+	border-radius: 25px;
+}
+
+.upload-btn-wrapper input[type=file] {
+	font-size: 3.1rem;
+	position: absolute;
+	left: 23%;
+	top: 30%;
+	opacity: 0;
+}

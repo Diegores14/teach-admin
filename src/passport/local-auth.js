@@ -37,6 +37,7 @@ passport.use('local-signup', new LocalStrategy({                 // definir el m
         newUser.departamento = "";
         newUser.ciudad = "";
         newUser.empresa = "";
+        newUser.photo = "profile.png"
         
         // console.log(newUser);
         var token = crypto.randomBytes(20).toString('hex');

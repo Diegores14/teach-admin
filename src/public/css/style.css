@@ -211,6 +211,11 @@ img.photo{
 	margin-top: 15%;
 }
 
+img.labelpic{
+	margin-top: 15%;
+	max-width: 7em;
+}
+
 img.photoPro{
 	width: 250px;
 	height: 250px;
