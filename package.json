@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js", 
+    "test" : "standard"
   },
   "author": "Diego Alejandro Restrepo S. - Jesus David Mena - Sebastian Angel",
   "license": "ISC",
@@ -25,6 +26,7 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "standard": "^12.0.1"
   }
 }
