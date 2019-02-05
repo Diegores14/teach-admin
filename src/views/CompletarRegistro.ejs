@@ -1,46 +1,6 @@
 <%- layout('layouts/session.ejs') %>
 
-<script type="text/javascript">
-  	function setDep(id){
-  		try{
-  			if(estado){	
-				var idCountry = id[id.selectedIndex].id;
-				var depar = document.getElementById('Estate');
-				var dep = <%- JSON.stringify(estado) %>;
-				for (var i = 0; i < Object.keys(dep).length;i++){
-					if(dep[i][2] == idCountry){
-						var opt = document.createElement('option');
-						opt.id = dep[i][1];
-						opt.innerHTML = dep[i][0];
-						depar.appendChild(opt);
-					}
-				}
-			}
-	  	}
-	  	catch(err){
-
-	  	}
-	}
-
-	function setCit(id) {
-		try{
-		var idEstate = id[id.selectedIndex].id;
-		var city = document.getElementById('City');
-		var cit = <%- JSON.stringify(ciudad) %>;
-		}catch(err){
-
-		}
-		/***
-		for (var i = 0; i < Object.keys(cit).length;i++){
-			if(cit[i][2] == idEstate){
-				var opt = document.createElement('option');
-				opt.value = cit[i][1];
-				opt.innerHTML = cit[i][0];
-				city.appendChild(opt);
-			}
-		}***/
-	}
-  </script>
+  <script src = "/scripts/request.js"></script>
 
 <section class="curso">
 		<div class="container">
@@ -87,17 +47,16 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Pais</label>
-          				<select name="pais" class="form-control" id="Country" onchange="setDep(this)">
-          					<% for(var i=0; i < Object.keys(pais).length; i++){ %>
-          						<option id="<%= pais[i][1]%>" > <%= pais[i][0]%></option>
-          					<% } %> 
-			          	</select>
+          				<select id = "pais" name="pais" class="form-control" id="Country" >
+							  <option value="" selected="selected">Seleccione País</option>
+						</select>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
           				<label>Departamento</label>
-          				<select name="departamento" class="form-control" id="Estate" onchange="setCit(this)">
+						  <select id = "state" name="departamento" class="form-control" id="Estate">
+								<option value="" selected="selected">Seleccione Departamento</option>
 			          	</select>
         			</div>	
 				</div>
@@ -106,8 +65,8 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Ciudad</label>
-          				<select name="ciudad" class="form-control" id="City">
-
+          				<select id = "city" name="ciudad" class="form-control" id="City">
+								<option value="" selected="selected">Seleccione Ciudad</option>
 			          	</select>
         			</div>
 				</div>
@@ -137,5 +96,6 @@
 					</div>
 				</div>
 			<% } %>
-    	</form>
+		</form>
 	</section>
+	<script src = "/scripts/Register/complete.js"></script>

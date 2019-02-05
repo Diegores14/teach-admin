@@ -55,23 +55,22 @@ router.get('/profile', isAuthenticated, isAuthenticatedEmail, (req, res, next) =
   res.render('profile', { user })
 })
 
+// aquí va ha retornar un formato json para poder llenar los selct en el html
+router.get('/countries', (req, res, next) => {
+  res.json(CoEsCi.getAllCountries())
+})
+
+router.get('/states/:token', (req, res, next) => {
+  res.json(CoEsCi.getStatesOfCountry(req.params.token))
+})
+
+router.get('/city/:token', (req, res, next) => {
+  res.json(CoEsCi.getCitiesOfState(req.params.token))
+})
+
 router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
-  const data = [[], [], []]
-  const country = CoEsCi.getAllCountries()
-  country.forEach((item) => {
-    data[0].push([item.name, item.id])
-    const estate = CoEsCi.getStatesOfCountry(item.id)
-    estate.forEach((state) => {
-      data[1].push([state.name, state.id, state.country_id])
-      const city = CoEsCi.getCitiesOfState(state.id)
-      city.forEach((city) => {
-        data[2].push([city.name, city.id, city.state_id])
-      })
-    })
-  })
   const user = req.user
-  console.log(data[1])
-  res.render('CompletarRegistro', { pais: data[0], estado: data[1], ciudad: data[2], user })
+  res.render('CompletarRegistro', { user })
 })
 
 router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'), (req, res, next) => {
