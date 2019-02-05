@@ -75,8 +75,10 @@ router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req, res
 
 router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'), (req, res, next) => {
   if (req.file) {
-    fs.renameSync(path.join(req.file.destination, req.file.filename), path.join(req.file.destination, req.file.filename) + '.jpeg')
-    req.body['photo'] = req.file.filename + '.jpeg'
+    var ext = path.extname(req.file.originalname)
+    fs.renameSync(path.join(req.file.destination, req.file.filename),
+    path.join(req.file.destination, req.file.filename) + ext)
+    req.body['photo'] = req.file.filename + ext
   }
   req.body.date = new Date(req.body.date)
   User.findByIdAndUpdate(req.user._id, req.body, (err, doc) => {
