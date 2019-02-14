@@ -100,33 +100,6 @@ passport.use('local-signin', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
-    //verificaion captcha inicio
-    if(
-        req.body['g-recaptcha-response'] === undefined ||
-        req.body['g-recaptcha-response'] === '' ||
-        req.body['g-recaptcha-response'] === null
-        ){
-        return done(null, false, req.flash('signinMessage', 'Fail captcha solve.'));
-        }
-
-    // secure key
-    const secretKey = '6LfAY48UAAAAANdMjqpBQdhmiprsc609BdrPLuxI';   
-
-    //verify url
-    const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body['g-recaptcha-response']}&remoteip=${req.connection.remoteAddress}`;
-    //make request to veridy url
-
-    request(verifyURL, async (err, response,body) => {
-        body = JSON.parse(body);
-        
-        //if not successful
-        if(body.success !== undefined && !body.success){
-            return done(null, false, req.flash('signinMessage', 'Fail captcha solve.'));
-        }
-
-        // if success
-    })
-    //verificacion captcha final
     const user = await User.findOne({document: req.body.document, username: username});
     if(!user) {
         return done(null, false, req.flash('signinMessage', 'usuario o contraseña incorrecta.'));
