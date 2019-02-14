@@ -22,7 +22,7 @@ function getCaptcha() {
 
 getCaptcha()
 
-formulario.onsubmit = () => {
+formulario.onsubmit = function() {
     var ans = true
     if(textcaptcha != captcha.value) {
         ans = false
