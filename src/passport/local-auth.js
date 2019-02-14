@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;       // para diferent
 const User = require('../models/user');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const request = require('request') 
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -18,6 +19,34 @@ passport.use('local-signup', new LocalStrategy({                 // definir el m
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) =>{
+
+    //verificaion captcha inicio
+    if(
+        req.body['g-recaptcha-response'] === undefined ||
+        req.body['g-recaptcha-response'] === '' ||
+        req.body['g-recaptcha-response'] === null
+        ){
+        return done(null, false, req.flash('signupMessage', 'Fail captcha solve.'));
+        }
+
+    // secure key
+    const secretKey = '6LfAY48UAAAAANdMjqpBQdhmiprsc609BdrPLuxI';   
+
+    //verify url
+    const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body['g-recaptcha-response']}&remoteip=${req.connection.remoteAddress}`;
+    //make request to veridy url
+
+    request(verifyURL, async (err, response,body) => {
+        body = JSON.parse(body);
+        
+        //if not successful
+        if(body.success !== undefined && !body.success){
+            return done(null, false, req.flash('signupMessage', 'Fail captcha solve.'));
+        }
+
+        // if success
+    })
+    //verificacion captcha final
     const user = await User.findOne({username: username});
     const user1 = await User.findOne({document: req.body.document});
     const user2 = await User.findOne({email: req.body.email});
@@ -71,6 +100,33 @@ passport.use('local-signin', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
+    //verificaion captcha inicio
+    if(
+        req.body['g-recaptcha-response'] === undefined ||
+        req.body['g-recaptcha-response'] === '' ||
+        req.body['g-recaptcha-response'] === null
+        ){
+        return done(null, false, req.flash('signinMessage', 'Fail captcha solve.'));
+        }
+
+    // secure key
+    const secretKey = '6LfAY48UAAAAANdMjqpBQdhmiprsc609BdrPLuxI';   
+
+    //verify url
+    const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body['g-recaptcha-response']}&remoteip=${req.connection.remoteAddress}`;
+    //make request to veridy url
+
+    request(verifyURL, async (err, response,body) => {
+        body = JSON.parse(body);
+        
+        //if not successful
+        if(body.success !== undefined && !body.success){
+            return done(null, false, req.flash('signinMessage', 'Fail captcha solve.'));
+        }
+
+        // if success
+    })
+    //verificacion captcha final
     const user = await User.findOne({document: req.body.document, username: username});
     if(!user) {
         return done(null, false, req.flash('signinMessage', 'usuario o contraseña incorrecta.'));

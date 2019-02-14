@@ -1,11 +1,11 @@
 <%- layout('layouts/session.ejs') %>
 
-<section class="curso">
+	<section class="curso">
 		<div class="container">
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
-					<h2>Crear estudiantes</h2>
-					<p class="descReg">A continuación ingrese los datos del estudiante que desea ingresar</p>
+					<h2>Crear Estudiantes</h2>
+					<p class="descReg">Crear estudiantes para el curso <%= Nombre del curso %> </p>
 				</div>
 			</div>
 		</div>
@@ -16,45 +16,49 @@
 		<form class="container" action="/completarUsuario" method="POST" enctype="multipart/form-data">
 			<div class="row container-fluid">
 				<div class="col-md-12 text-center">
-					<img src="img/David.jpg" class="photoPro"> 
+					<img src="../public/img/David.jpg" class="photoPro"> 
 				</div>
 			</div>
 			<div class="row" style="margin: 0 35%">
 				<div class="col-md-12">
-					<input type="file" name="avatar" />
+					<div class="upload-btn-wrapper">
+					  <button class="btn">Cargar foto de perfil</button>
+					  <input type="file" name="avatar" accept="image/*"/>
+					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 						<label>Nombre</label>
-          				<input type="text" class="form-control rgt" name="NombreEstudiante" placeholder="Type here..." required>
+          				<input type="text" class="form-control rgt" name="firstName" placeholder="Escriba aqui..." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
-						<label>Numero de Identificacion</label>
-          				<input type="number" class="form-control rgt" name="identificacion" placeholder="Type here...">
+						<label>Numero de Identificación</label>
+          				<input class="form-control rgt number" name="document" placeholder="Escriba aqui..." required>
         			</div>	
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
-						<label>Apellido</label>
-          				<input type="text" class="form-control rgt" name="Apellido" placeholder="Type here..." required>
+          				<label>Apellido</label>
+          				<input type="text" class="form-control rgt" name="firstName" placeholder="Escriba aqui.." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
-						<label>Correo</label>
-          				<input type="email" class="form-control rgt" name="Correo" placeholder="Type here...">
-        			</div>	
+			          	<label>Correo</label>
+			          	<input id = "email" class="form-control rgt" name="email" placeholder="Escriba aqui..." required>
+          				<label id="emailcheck" name="emailcheck"></label>
+		        	</div>	
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
-					<button type="submit" class="btn btn-default r">Crear Estudiante</button>
+					<button type="submit" class="btn btn-default r">Guardar</button>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<button type="submit" class="btn btn-default l" formaction="/" formmethod="GET">Cancelar</button>
@@ -73,3 +77,7 @@
 			<% } %>
     	</form>
 	</section>
+	<script type="text/javascript" src="scripts/emailComfirmation.js"></script>
+	<script type="text/javascript" src="scripts/numberAutentication.js"></script>
+	<script type="text/javascript" src = "scripts/passwordAutentication.js"></script>
+  	<script src = "/scripts/request.js"></script>

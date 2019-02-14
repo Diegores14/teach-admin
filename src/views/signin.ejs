@@ -1,7 +1,7 @@
 <%- layout('layouts/main.ejs') %>
 
 	<section>
-		<form id = "formulario" class="container" action="/signin" method="POST">
+		<form class="container" id="capt" action="/signin" method="POST">
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Ingresar</h2>
@@ -35,12 +35,31 @@
         	</div>
 				</div>
 			</div>
+			<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+				<div class="row" style="margin: 0 auto; width: 304px;">
+				<div class = "form-group">
+				<div class="g-recaptcha" name="captcha" data-sitekey="6LfAY48UAAAAAGWhYfpzRzWmvkNI4GJvQjtD02J4"></div>
+				</div>
+				</div>
 			<div class="row">
 				<div class="col-md-12">
 					<button id = "boton" type="submit" class="btn btn-default m">Login</button>
 				</div>
 			</div>
 		</form>
+	<script>
+			document.getElementById('capt').addEventListener('submit', submitForm);
+			function submitForm(e){
+				
+				const captcha = document.querySelector('#g-recaptcha-response').value;
+				
+				if (captcha == ''){
+					e.preventDefault();
+					alert('please solve captcha')
+				}
+				console.log(captcha)
+			}
+	</script>
 	</section>
 	<script src = "/scripts/passwordAutentication.js"></script>
 	<script src="/scripts/numberAutentication.js"></script>
