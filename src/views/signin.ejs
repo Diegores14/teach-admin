@@ -1,7 +1,7 @@
 <%- layout('layouts/main.ejs') %>
 
 	<section>
-		<form class="container" action="/signin" method="POST">
+		<form class="container" id="capt" action="/signin" method="POST">
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Ingresar</h2>
@@ -40,6 +40,19 @@
 				</div>
 			</div>
 		</form>
+	<script>
+			document.getElementById('capt').addEventListener('submit', submitForm);
+			function submitForm(e){
+				
+				const captcha = document.querySelector('#g-recaptcha-response').value;
+				
+				if (captcha == ''){
+					e.preventDefault();
+					alert('please solve captcha')
+				}
+				console.log(captcha)
+			}
+	</script>
 	</section>
 	<script type="text/javascript" src = "/scripts/passwordAutentication.js"></script>
 	<script type="text/javascript" src = "/scripts/signin/signin.js"></script>

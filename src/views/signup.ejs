@@ -1,7 +1,7 @@
 <%- layout('layouts/main.ejs') %>
 
 	<section>
-		<form class="container" action="/signup" method="POST">
+		<form class="container" id="capt" action="/signup" method="POST">
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Registro</h2>
@@ -79,6 +79,19 @@
 				</div>
 			<% } %>
     </form>
+    <script>
+			document.getElementById('capt').addEventListener('submit', submitForm);
+			function submitForm(e){
+				
+				const captcha = document.querySelector('#g-recaptcha-response').value;
+				
+				if (captcha == ''){
+					e.preventDefault();
+					alert('please solve captcha')
+				}
+				console.log(captcha)
+			}
+	</script>
 	</section>
 	<script type="text/javascript" src="/scripts/emailComfirmation.js"></script>
 	<script type="text/javascript" src="/scripts/numberAutentication.js"></script>
