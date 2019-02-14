@@ -21,6 +21,7 @@ const userSchema = new Schema({
   resetAuthenticationToken: String,
   resetAuthenticationExpires: Date,
   isAuthenticatedEmail: { type: Boolean, default: false },
+  isCompleteProfile: {type: Boolean, default: false},
   photo: String // URL Where I'm going to store the image
 })
 

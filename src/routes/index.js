@@ -51,7 +51,7 @@ router.use((req, res, next) => {
 });
 */
 
-router.get('/profile', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
+router.get('/profile', isAuthenticated, isAuthenticatedEmail, isComplete, (req, res, next) => {
   const user = req.user
   res.render('profile', { user })
 })
@@ -85,13 +85,14 @@ router.get('/textcaptcha', (req, res) => {
   res.send(req.session.captcha)
 })
 
-router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'), (req, res, next) => {
+router.post('/completarUsuario', isAuthenticated, isAuthenticatedEmail, uploadDocent.single('avatar'), (req, res, next) => {
   if (req.file) {
     var ext = path.extname(req.file.originalname)
     fs.renameSync(path.join(req.file.destination, req.file.filename),
     path.join(req.file.destination, req.file.filename) + ext)
     req.body['photo'] = req.file.filename + ext
   }
+  req.body['isCompleteProfile'] = true
   req.body.date = new Date(req.body.date)
   User.findByIdAndUpdate(req.user._id, req.body, (err, doc) => {
     if (err) { 
@@ -108,7 +109,7 @@ router.get('/logout', isAuthenticated, (req, res, next) => {
 })
 
 // Course
-router.get('/courses', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
+router.get('/courses', isAuthenticated, isAuthenticatedEmail, isComplete, (req, res, next) => {
   // cargar los cursos, falta poner eso
   User.findById(req.user._id, (err, user) => {
     if (!err) {
@@ -124,7 +125,7 @@ router.get('/courses', isAuthenticated, isAuthenticatedEmail, (req, res, next) =
   })
 })
 
-router.get('/CreateCourse', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
+router.get('/CreateCourse', isAuthenticated, isAuthenticatedEmail, isComplete, (req, res, next) => {
   res.render('createCourses')
 })
 
@@ -267,7 +268,8 @@ router.get('/comfirmation/:token', (req, res, next) => {
     console.log('hello')
     user.isAuthenticatedEmail = true
     user.save((err) => {
-      res.redirect('/profile')
+      req.logout() // cierro la session
+      res.redirect('/')
     })
   })
 })
@@ -297,5 +299,13 @@ function promiseFindCourse (id) {
     })
   })
 };
+
+function isComplete(req, res, next){
+  if(req.user.isCompleteProfile){
+    return next()
+  }
+  res.redirect('/completarUsuario')
+}
+
 
 module.exports = router
