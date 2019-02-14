@@ -22,12 +22,21 @@ function getCaptcha() {
 
 getCaptcha()
 
+captcha.onkeydown = function(event) {
+    if(event.key == 'Enter') {
+        return false
+    } else {
+        return true
+    }
+}
+
 formulario.onsubmit = function() {
     var ans = true
     if(textcaptcha != captcha.value) {
         ans = false
         getCaptcha()
-        console.log('captcha incorrecto ')
+        captcha.value = ''
+        console.log('captcha incorrecto')
     }
     
     if(/^\d+$/.test(documento.value) == false) {

@@ -131,7 +131,7 @@ router.get('/courses', isAuthenticated, isAuthenticatedEmail, isComplete, (req, 
 })
 
 router.get('/CreateCourse', isAuthenticated, isAuthenticatedEmail, isComplete, (req, res, next) => {
-  res.render('createCourses')
+  res.render('createCourses', req.user)
 })
 
 // create Course and Upate User
@@ -277,6 +277,11 @@ router.get('/comfirmation/:token', (req, res, next) => {
       res.redirect('/')
     })
   })
+})
+
+router.get('/createstudent', (req, res, next) => {
+  console.log(req.user)
+  res.render('createStudent', req.user)
 })
 
 // Esto es para saber su esta autenticado algun usuario y de esta forma poder dejarlo acceder a la pagina.
