@@ -3,7 +3,6 @@ const LocalStrategy = require('passport-local').Strategy;       // para diferent
 const User = require('../models/user');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const request = require('request') 
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
