@@ -30,11 +30,50 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 		    <ul class="nav navbar-nav navbar-center">
-					<li><a href="/completarUsuario">Completar usuario</a></li>
-					<li><a href="#">Perfil</a></li>
-					<li><a href="/createcourse">Nuevo Curso</a></li>
-					<li class="active"><a href="/courses">Mis cursos</a></li>
-					<li><a href="">Estudiantes</a></li>
+					<li><a href="/profile">Perfil</a></li>
+					<li class="active dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mis cursos</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="navbar-list">
+									<div class="row">
+										<p>
+					                        <a href="/courses" class="">Ver cursos</a>
+					                      </p>
+									</div>
+									<div class="row">
+										<p>
+					                        <a href="/CreateCourse" class="">Crear nuevo curso</a>
+					                      </p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Estudiantes</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="navbar-list">
+									<div class="row">
+										<p>
+					                        <a href="#" class="">Importar estudiantes</a>
+					                     </p>
+									</div>
+									<div class="row">
+										<p>
+					                        <a href="#" class="">Inscribir estudiante</a>
+					                     </p>
+									</div>
+									<div class="row">
+										<p>
+					                        <a href="#" class="">Listar estudiantes</a>
+					                     </p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
 					<li><a href="">Notificación</a></li>
 					<li><a href="">Configuración</a></li>
 		    </ul>
