@@ -94,9 +94,12 @@ router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'),
   }
   req.body.date = new Date(req.body.date)
   User.findByIdAndUpdate(req.user._id, req.body, (err, doc) => {
-    if (err) { console.log(err) }
+    if (err) { 
+      console.log(err)
+    } else {
+      res.redirect('/profile')
+    }
   })
-  res.render('profile')
 })
 
 router.get('/logout', isAuthenticated, (req, res, next) => {
