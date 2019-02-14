@@ -5,23 +5,28 @@ var documento = document.getElementById('document')
 var formulario = document.getElementById('formulario')
 var textcaptcha = ''
 
-ajaxGet('/captcha', (err, data) => {
-    if(!err){
-        var captcha = document.getElementById('divcaptcha')
-        captcha.innerHTML = data.substr(0, 5) + "id = \"svgcaptcha\" " + data.substring(5, data.length -1)
-    }
-})
+function getCaptcha() {
+    ajaxGet('/captcha', (err, data) => {
+        if(!err){
+            var captcha = document.getElementById('divcaptcha')
+            captcha.innerHTML = data.substr(0, 5) + "id = \"svgcaptcha\" " + data.substring(5, data.length -1)
+        }
+    })
+    
+    ajaxGet('/textcaptcha', (err, data) => {
+        if(!err) {
+            textcaptcha = data
+        }
+    })
+}
 
-ajaxGet('/textcaptcha', (err, data) => {
-    if(!err) {
-        textcaptcha = data
-    }
-})
+getCaptcha()
 
-formulario.onsubmit = () => {
+formulario.onsubmit = function() {
     var ans = true
     if(textcaptcha != captcha.value) {
         ans = false
+        getCaptcha()
         console.log('captcha incorrecto ')
     }
     

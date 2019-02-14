@@ -1,7 +1,7 @@
 <%- layout('layouts/main.ejs') %>
 
 	<section>
-		<form class="container" id="capt" action="/signin" method="POST">
+		<form id = "formulario" class="container" id="capt" action="/signin" method="POST">
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Ingresar</h2>
@@ -31,7 +31,8 @@
 						<div id="divcaptcha">
 
 						</div>
-          	<input id = "captcha" onpaste = "return false" onut = "return false" oncopy = "return false" class="form-control rgt password" name="captcha" placeholder="Type here..." required>
+			  <input id = "captcha" onpaste = "return false" onut = "return false" oncopy = "return false" class="form-control rgt password" name="captcha" placeholder="Type here..." required>
+			  <label id = "labelcaptcha"></label>
         	</div>
 				</div>
 			</div>
@@ -43,21 +44,7 @@
 				</div>
 			</div>
 		</form>
-	<script>
-			document.getElementById('capt').addEventListener('submit', submitForm);
-			function submitForm(e){
-				
-				const captcha = document.querySelector('#g-recaptcha-response').value;
-				
-				if (captcha == ''){
-					e.preventDefault();
-					alert('please solve captcha')
-				}
-				console.log(captcha)
-			}
-	</script>
 	</section>
-	<script src = "/scripts/passwordAutentication.js"></script>
 	<script src="/scripts/numberAutentication.js"></script>
 	<script src="/scripts/request.js"></script>
 	<script src = "/scripts/signin/signin.js"></script>
