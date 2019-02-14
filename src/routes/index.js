@@ -13,6 +13,7 @@ const CoEsCi = require('country-state-city')
 const multer = require('multer')
 const uploadDocent = multer({ dest: path.resolve('src/public/img/Users/') })
 const fs = require('fs')
+const svgCaptcha = require('svg-captcha')
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
@@ -71,6 +72,17 @@ router.get('/city/:token', (req, res, next) => {
 router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
   const user = req.user
   res.render('CompletarRegistro', { user })
+})
+
+// get captcha
+router.get('/captcha', (req, res) => {
+  var captcha = svgCaptcha.create( {color: true, size: 5})
+  req.session.captcha = captcha.text
+  res.send(captcha.data)
+})
+
+router.get('/textcaptcha', (req, res) => {
+  res.send(req.session.captcha)
 })
 
 router.post('/completarUsuario', isAuthenticated, uploadDocent.single('avatar'), (req, res, next) => {

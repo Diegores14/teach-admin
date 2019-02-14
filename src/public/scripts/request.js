@@ -6,7 +6,7 @@ function ajaxGet(url, callback) {
         if(req.status >= 200 && req.status < 400 ){
             callback(null, req.responseText)
         } else {
-            callback(Req.status + " " + req.statusText)
+            callback(req.status + " " + req.statusText)
         }
     })
     req.addEventListener("error", () => {

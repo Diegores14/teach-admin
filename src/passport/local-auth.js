@@ -71,7 +71,6 @@ passport.use('local-signin', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
-    
     const user = await User.findOne({document: req.body.document, username: username});
     if(!user) {
         return done(null, false, req.flash('signinMessage', 'usuario o contraseña incorrecta.'));
