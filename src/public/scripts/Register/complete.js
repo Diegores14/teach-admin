@@ -4,7 +4,7 @@ var city = document.getElementById('city')
 var idState = 0;
 
 window.onload = function() {
-    ajaxGet('http://localhost:3000/countries', (err, data)=>{
+    ajaxGet('https://teach-admin.herokuapp.com/countries', (err, data)=>{
         if(!err) {
             data = JSON.parse(data)
             for(var i = 0; i<data.length; i++) {
