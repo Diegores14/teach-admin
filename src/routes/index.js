@@ -74,6 +74,11 @@ router.get('/completarUsuario', isAuthenticated, isAuthenticatedEmail, (req, res
   res.render('CompletarRegistro', { user })
 })
 
+router.get('/updateUser', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  res.render('updateUser',{ user })
+})
+
 // get captcha
 router.get('/captcha', (req, res) => {
   var captcha = svgCaptcha.create( {color: true, size: 5})
