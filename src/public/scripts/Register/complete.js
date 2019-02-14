@@ -21,7 +21,7 @@ pais.onchange = function(){
     city.length = 1
     if(this.selectedIndex < 1)
         return;
-    ajaxGet('http://localhost:3000/states/' + this.selectedIndex, (err, data)=>{
+    ajaxGet('https://teach-admin.herokuapp.com/states/' + this.selectedIndex, (err, data)=>{
         if(!err) {
             data = JSON.parse(data)
             idState = Number(data[0].id)
@@ -39,7 +39,7 @@ state.onchange = function(){
     if(this.selectedIndex < 1)
         return;
     var token = Number(this.selectedIndex) + idState - 1
-    ajaxGet('http://localhost:3000/city/' + token, (err, data)=>{
+    ajaxGet('https://teach-admin.herokuapp.com/city/' + token, (err, data)=>{
         if(!err) {
             data = JSON.parse(data)
             for(var i = 0; i<data.length; i++) {
