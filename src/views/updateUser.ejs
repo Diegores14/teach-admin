@@ -1,0 +1,88 @@
+<%- layout('layouts/session.ejs') %>
+
+	<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Actualizar</h2>
+					<p class="descReg">Actualizar los datos del docente <%= user.firstName%> <%= user.lastName%> </p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<section>
+		<form class="container" action="/completarUsuario" method="POST" enctype="multipart/form-data">
+			<div class="row container-fluid">
+				<div class="col-md-12 text-center">
+					<img src="img/Users/<%= user.photo%>" class="photoPro"> 
+				</div>
+			</div>
+			<div class="row" style="margin: 0 35%">
+				<div class="col-md-12">
+					<div class="upload-btn-wrapper">
+					  <button class="btn">Cargar foto de perfil</button>
+					  <input type="file" name="avatar" accept="image/*"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+          				<label>Pais</label>
+          				<select id = "pais" name="pais" class="form-control" id="Country" >
+							  <option value="" selected="selected">Seleccione País</option>
+						</select>
+        			</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+          				<label>Departamento</label>
+						  <select id = "state" name="departamento" class="form-control" id="Estate">
+								<option value="" selected="selected">Seleccione Departamento</option>
+			          	</select>
+        			</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+          				<label>Ciudad</label>
+          				<select id = "city" name="ciudad" class="form-control" id="City">
+								<option value="" selected="selected">Seleccione Ciudad</option>
+			          	</select>
+        			</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+			          	<label>Empresa</label>
+			          	<input type="text" class="form-control rgt" name="empresa" minlength="8" placeholder="Escriba aquí..." required>
+		        	</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default r">Guardar</button>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default l" formaction="/" formmethod="GET">Cancelar</button>
+				</div>
+			</div>
+
+			<!--  Necesitamos mirar bien esta parte para que no se vaya a darñar el responsive-->
+			<% if(signupMessage.length > 0) { %>
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group r">
+							<label><%= signupMessage %></label>
+						</div>
+					</div>
+				</div>
+			<% } %>
+    	</form>
+	</section>
+	<script type="text/javascript" src="scripts/emailComfirmation.js"></script>
+	<script type="text/javascript" src="scripts/numberAutentication.js"></script>
+	<script type="text/javascript" src = "scripts/passwordAutentication.js"></script>
+  	<script src = "/scripts/request.js"></script>
