@@ -21,7 +21,6 @@ formulario.onsubmit = () => {
     if(textcaptcha != captcha.value) {
         ans = false
         captchacheck.innerHTML = 'No está bien escrito el captcha'
-        console.log('captcha')
     }
     return ans
 }
