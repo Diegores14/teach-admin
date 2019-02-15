@@ -5,25 +5,25 @@
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Editar Curso</h2>
-					<p class="descReg"> <%= name %>  </p>
+					<p class="descReg"> <%= course.name %>  </p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="curso">
-		<form class="container" action="/createCourse" method="POST">
+		<form class="container" action="/editCourses?id=<%=course._id%>" method="POST">
 			<div class="row text-center">
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 						<label>Codigo de la materia</label>
-          	<input type="text" name="cod" class="form-control rgt" placeholder="Type here...">
+          	<input type="text" name="cod" class="form-control rgt" value = "<%= course.cod%>">
         	</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 						<label>Nombre de la materia</label>
-          	<input type="text" name="name" class="form-control rgt" placeholder="Type here...">
+          	<input type="text" name="name" class="form-control rgt" value = "<%= course.name%>" >
         	</div>	
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           	<label>Tipo de Curso</label>
-          	<select name="typeCourse" class="form-control" id="">
+          	<select name="typeCourse" class="form-control" id="" value = "<%= course.typeCourse%>" >
           		<option>Escoja una opción</option>
           		<option value="Teorico">Teorico</option>
           		<option value="Practico">Practico</option>
@@ -42,7 +42,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
           	<label>Tipo de notas</label>
-          	<select name="typeNotes" class="form-control" id="">
+          	<select name="typeNotes" class="form-control" id="" value = "<%= course.typeNotes%>">
           		<option>Escoja una opción</option>
           		<option value="Cualitativa">Cualitativa</option>
           		<option value="Cuantitativa">Cuantitativa</option>
@@ -54,13 +54,13 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 			          	<label>Fecha de inicio</label>
-			          	<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
+			          	<input type="date" class="form-control rgt" name="dateStart" value = "<%= course.duration.start%>" required>
         	</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 		          		<label>Fecha de fin</label>
-			          	<input type="date" class="form-control rgt" name="dateEnd" placeholder="Escriba aquí..." required>
+			          	<input type="date" class="form-control rgt" name="dateEnd" value = "<%= course.duration.start%>" required>
         			</div>	
 				</div>
 			</div>

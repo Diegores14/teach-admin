@@ -84,36 +84,44 @@ router.get('/updateUser', isAuthenticated, isAuthenticatedEmail, isComplete, (re
 router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
   var courseName = ""
-  Course.findOne({cod :req.query.cod}, function (err, course) {
+  Course.findById(req.query.id, function (err, course) {
         if (!course) {
           req.flash('noUserMessage', 'No existe un curso')
           return res.redirect('/courses')
         }
         courseName = course.name
-        console.log(req.query.cod)
+        console.log(req.query.id)
         console.log(courseName)
-        res.render('adminClass',{ user , name: courseName})
+        res.render('adminClass',{ user , name: courseName, id : course._id})
       })
+})
+
+router.post('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  req.body.date = Date(req.body.date)
+  Course.findByIdAndUpdate(req.query.id, { $push: {activities : req.body} }, (err, course) => {
+    res.redirect('/courses')
+  })
 })
 
 router.get('/editCourses', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
   var courseName = ""
-  Course.findOne({cod :req.query.cod}, function (err, course) {
+  Course.findById(req.query.id, function (err, course) {
         if (!course) {
           req.flash('noUserMessage', 'No existe un curso')
           return res.redirect('/courses')
         }
         courseName = course.name
-        console.log(req.query.cod)
+        console.log(req.query.id)
         console.log(courseName)
-        res.render('editCourses',{ user , name: courseName})
+        res.render('editCourses',{ user , course : course})
       })
 })
 
-router.post('/editCourses', (req, res) => {
-  Course.findOneAndUpdate({Cod : req.query.cod}, req.body )
-  res.redirect('/editCourses')
+router.post('/editCourses',  isAuthenticated, isAuthenticatedEmail, isComplete, (req, res) => {
+  Course.findByIdAndUpdate(req.query.id, req.body, (err, doc) => {
+    res.redirect('/editCourses')
+  })
 })
 
 // get captcha

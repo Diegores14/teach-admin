@@ -13,18 +13,18 @@
 
 	
 	<section>
-		<form class="container" action="/adminClass" method="POST" enctype="multipart/form-data">
+		<form class="container" action="/adminClass?id=<%=id%>" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Tema del dia</label>
-				  		<input type="text" class="form-control rgt" name="TemadeDia"  placeholder="Escriba aquí..." required>
+				  		<input type="text" class="form-control rgt" name="theme"  placeholder="Escriba aquí..." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">	
 					<div class="form-group l">
           				<label>Fecha</label>
-          				<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
+          				<input type="date" class="form-control rgt" name="date" placeholder="Escriba aquí..." required>
         			</div>
         		</div>
 			</div>
@@ -32,17 +32,17 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Nombre de Actividad</label>
-						<input type="text" class="form-control rgt" name="nameAct"  placeholder="Escriba aquí..." required>
+						<input type="text" class="form-control rgt" name="title"  placeholder="Escriba aquí..." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
-          				<label>Seleccionar numero de actividades</label>
-						  <select id = "state" name="Numero" class="form-control" id="Numero" required>
-      							<option value="1">1</option>
-      							<option value="2">2</option>
-      							<option value="3">3</option>
-      							<option value="4">4</option>
+          				<label>porcentaje</label>
+						  <select id = "state" name="percentage" class="form-control" id="Numero" required>
+      							<option value="1">33.33</option>
+      							<option value="2">30</option>
+      							<option value="3">20</option>
+      							<option value="4">25</option>
 			          	</select>
         			</div>
 				</div>

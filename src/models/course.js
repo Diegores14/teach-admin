@@ -8,7 +8,14 @@ const courseSchema = new Schema({
   shedule: [ { start: Date, end: Date } ],
   students: [ ObjectId ],
   themes: [ { title: String, description: String, date: Date } ],
-  activities: [ { title: String, percentage: Number, description: String, value: Number, date: Date } ],
+  activities: [ 
+    { 
+      title: String,
+      theme : String,
+      percentage: Number,
+      description: String,
+      date: Date 
+    } ],
   duration: { start: Date, end: Date },
   calification: [ { student: ObjectId, value: Number } ],
   typeCourse: String,
