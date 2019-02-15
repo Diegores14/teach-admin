@@ -111,6 +111,11 @@ router.get('/editCourses', isAuthenticated, isAuthenticatedEmail, isComplete, (r
       })
 })
 
+router.post('/editCourses', (req, res) => {
+  Course.findOneAndUpdate({Cod : req.query.cod}, req.body )
+  res.redirect('/editCourses')
+})
+
 // get captcha
 router.get('/captcha', (req, res) => {
   var captcha = svgCaptcha.create( {color: true, size: 5})
