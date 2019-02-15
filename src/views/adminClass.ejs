@@ -1,0 +1,72 @@
+<%- layout('layouts/session.ejs') %>
+
+	<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Administrar Clases</h2>
+					<p class="descReg"> nombredelcurso </p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	
+	<section>
+		<form class="container" action="/adminClass" method="POST" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+          				<label>Tema del dia</label>
+				  		<input type="text" class="form-control rgt" name="TemadeDia"  placeholder="Escriba aquí..." required>
+        			</div>
+				</div>
+				<div class="col-md-6 col-sm-12">	
+					<div class="form-group l">
+          				<label>Fecha</label>
+          				<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
+        			</div>
+        		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+          				<label>Nombre de Actividad</label>
+						<input type="text" class="form-control rgt" name="nameAct"  placeholder="Escriba aquí..." required>
+        			</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+          				<label>Seleccionar numero de actividades</label>
+						  <select id = "state" name="Numero" class="form-control" id="Numero" required>
+      							<option value="1">1</option>
+      							<option value="2">2</option>
+      							<option value="3">3</option>
+      							<option value="4">4</option>
+			          	</select>
+        			</div>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-12"  style="padding: 0% 25%">>
+					<div class="form-group">
+          				<label>Descripcion de actividad</label>
+						<textarea class="form-control TextM" name="description" rows="5" id="comment" placeholder="Type here..."></textarea>
+        			</div>	
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default r">Guardar</button>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default l" formaction="/" formmethod="GET">Cancelar</button>
+				</div>
+			</div>
+    	</form>
+	</section>
+	<script type="text/javascript" src="scripts/emailComfirmation.js"></script>
+	<script type="text/javascript" src="scripts/numberAutentication.js"></script>
+	<script type="text/javascript" src = "scripts/passwordAutentication.js"></script>
+  	<script src = "/scripts/request.js"></script>
