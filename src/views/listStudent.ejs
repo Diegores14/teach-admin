@@ -1,0 +1,22 @@
+<%- layout('layouts/session.ejs') %>
+
+	<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Lista de estudiantes</h2>
+					<p class="descReg">Docente <%= user.firstName%> <%= user.lastName%></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<% for(var i = 0; i <= Student.length ; i++){ %>
+			<div class="row">
+				<div class="col-sm-12">
+					
+				</div>
+			</div>
+		<% } %>
+	</section>

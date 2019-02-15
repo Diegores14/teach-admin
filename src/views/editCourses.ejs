@@ -5,7 +5,7 @@
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Editar Curso</h2>
-					<p class="descReg"> <%= name %>  </p>
+					<p class="descReg"> <%= course.name %>  </p>
 				</div>
 			</div>
 		</div>
@@ -17,14 +17,14 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 						<label>Codigo de la materia</label>
-          	<input type="text" name="cod" class="form-control rgt" placeholder="Type here...">
-        	</div>
+          				<input type="text" name="cod" class="form-control rgt" placeholder="Type here..." value="<%= course.cod %>">
+        			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 						<label>Nombre de la materia</label>
-          	<input type="text" name="name" class="form-control rgt" placeholder="Type here...">
-        	</div>	
+          				<input type="text" name="name" class="form-control rgt" placeholder="Type here..." value="<%= course.name %>">
+        			</div>	
 				</div>
 			</div>
 			<div class="row text-center">
@@ -54,21 +54,21 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 			          	<label>Fecha de inicio</label>
-			          	<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
+			          	<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." value="<%= course.duration[0] %>" required>
         	</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 		          		<label>Fecha de fin</label>
-			          	<input type="date" class="form-control rgt" name="dateEnd" placeholder="Escriba aquí..." required>
+			          	<input type="date" class="form-control rgt" name="dateEnd" placeholder="Escriba aquí..." value="<%= course.duration[1] %>" required>
         			</div>	
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 col-sm-12">
+				<div class="col-md-6 col-sm-12 col-xs-6">
 					<button type="submit" class="btn btn-default r" formaction="/createCourse" formmethod="GET">Cancelar edicion</button>
 				</div>
-				<div class="col-md-6 col-sm-12">
+				<div class="col-md-6 col-sm-12 col-xs-6">
 					<button type="submit" class="btn btn-default l">Crear edicion</button>
 				</div>
 			</div>

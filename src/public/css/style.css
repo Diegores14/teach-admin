@@ -2,6 +2,21 @@ body{
 	background-color: #565656;
 }
 
+img.logoSup{
+	max-width: 300px;
+	margin: -5% 0% 0% 0%;
+	padding-right: 20%;
+	padding-top: 3%;
+}
+
+img.logoInf{
+	max-width: 300px;
+	margin: -5% 0% 0% 0%;
+	padding-right: 20%;
+	padding-top: 3%;
+}
+
+
 .navbar-nav.navbar-center {
   position: absolute;
   left: 50%;
