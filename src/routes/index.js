@@ -287,17 +287,18 @@ router.get('/createstudent', isAuthenticated, isAuthenticatedEmail, isComplete, 
 })
 
 router.post('/createstudent', isAuthenticated, isAuthenticatedEmail, isComplete, uploadStudent.single('avatar'), (req, res, next) => {
-  console.log(req.body)
-  STUDENT.findOne({ Codigo : req.body.Codigo }, (err, student) => {
+  STUDENT.findOne({ Codigo : req.body.Codigo, idDocent : req.user._id }, async (err, student) => {
     if(!err) {
       if(!student) {
-        console.log(req.body)
         student = new STUDENT()
         student.firstName = req.body.firstName
         student.Codigo = req.body.Codigo
         student.lastName = req.body.lastName
         student.email = req.body.email
-        student.save()
+        student.idDocent = req.user._id
+        await student.save()
+        User.findByIdAndUpdate(req.user._id, {$push: { students: student._id} }, (err, doc) => {
+        })
       }
     } else {
       console.log(err)

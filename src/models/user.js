@@ -16,6 +16,7 @@ const userSchema = new Schema({
   ciudad: String,
   empresa: String,
   courses: [ ObjectId ],
+  students : [ObjectId],
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   resetAuthenticationToken: String,

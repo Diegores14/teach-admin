@@ -10,6 +10,7 @@ const studentSchema = new Schema({
   birthdate: Date,
   country: String,
   city: String,
+  idDocent : ObjectId,
   courses: [ ObjectId ],
   School: String,
   photo: String // URL Where I'm going to store the image
