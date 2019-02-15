@@ -125,7 +125,6 @@ router.get('/courses', isAuthenticated, isAuthenticatedEmail, isComplete, (req, 
         data.push(promiseFindCourse(item))
       })
       Promise.all(data).then((results) => {
-        console.log(results)
         res.render('Courses', { Courses: results })
       })
     }
@@ -138,6 +137,7 @@ router.get('/CreateCourse', isAuthenticated, isAuthenticatedEmail, isComplete, (
 
 // create Course and Upate User
 router.post('/CreateCourse', isAuthenticated, async (req, res, next) => {
+  req.body['duration'] = { start : Date(req.body.dateStart), end : Date(req.body.dateEnd) }
   const newCourse = new Course(req.body)
   await newCourse.save()
   User.findOneAndUpdate({ _id: req.user._id }, { $push: { courses: newCourse._id } }, (err, doc) => { // hay que verificar si hay error
