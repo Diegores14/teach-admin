@@ -81,6 +81,36 @@ router.get('/updateUser', isAuthenticated, isAuthenticatedEmail, isComplete, (re
   res.render('updateUser',{ user })
 })
 
+router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  var courseName = ""
+  Course.findOne({cod :req.query.cod}, function (err, course) {
+        if (!course) {
+          req.flash('noUserMessage', 'No existe un curso')
+          return res.redirect('/courses')
+        }
+        courseName = course.name
+        console.log(req.query.cod)
+        console.log(courseName)
+        res.render('adminClass',{ user , name: courseName})
+      })
+})
+
+router.get('/editCourses', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  var courseName = ""
+  Course.findOne({cod :req.query.cod}, function (err, course) {
+        if (!course) {
+          req.flash('noUserMessage', 'No existe un curso')
+          return res.redirect('/courses')
+        }
+        courseName = course.name
+        console.log(req.query.cod)
+        console.log(courseName)
+        res.render('editCourses',{ user , name: courseName})
+      })
+})
+
 // get captcha
 router.get('/captcha', (req, res) => {
   var captcha = svgCaptcha.create( {color: true, size: 5})

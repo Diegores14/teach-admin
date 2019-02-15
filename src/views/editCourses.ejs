@@ -1,0 +1,76 @@
+<%- layout('layouts/session.ejs') %>
+
+	<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Editar Curso</h2>
+					<p class="descReg"> <%= name %>  </p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="curso">
+		<form class="container" action="/createCourse" method="POST">
+			<div class="row text-center">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+						<label>Codigo de la materia</label>
+          	<input type="text" name="cod" class="form-control rgt" placeholder="Type here...">
+        	</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+						<label>Nombre de la materia</label>
+          	<input type="text" name="name" class="form-control rgt" placeholder="Type here...">
+        	</div>	
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+          	<label>Tipo de Curso</label>
+          	<select name="typeCourse" class="form-control" id="">
+          		<option>Escoja una opción</option>
+          		<option value="Teorico">Teorico</option>
+          		<option value="Practico">Practico</option>
+          		<option value="TeoPrac">Teorico-Practico</option>
+          	</select>
+        	</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+          	<label>Tipo de notas</label>
+          	<select name="typeNotes" class="form-control" id="">
+          		<option>Escoja una opción</option>
+          		<option value="Cualitativa">Cualitativa</option>
+          		<option value="Cuantitativa">Cuantitativa</option>
+          	</select>
+        	</div>	
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+			          	<label>Fecha de inicio</label>
+			          	<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
+        	</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
+		          		<label>Fecha de fin</label>
+			          	<input type="date" class="form-control rgt" name="dateEnd" placeholder="Escriba aquí..." required>
+        			</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default r" formaction="/createCourse" formmethod="GET">Cancelar edicion</button>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-default l">Crear edicion</button>
+				</div>
+			</div>
+		</form>
+	</section>
