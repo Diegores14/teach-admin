@@ -1,0 +1,40 @@
+<%- layout('layouts/main.ejs') %>
+
+<section>
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+						<label>Nombre Actividad</label>
+          	<input type="text" class="form-control rgt" id ="nombre" name="nombreActividad" placeholder="Type here..." required>
+        	</div>
+        	</div>
+        	</div>
+	<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+						<label>Fecha Actividad</label>
+          	<input type="date" class="form-control rgt" id ="fecha" name="date" placeholder="Type here..." required>
+        	</div>
+       <div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="form-group r">
+						<label>Porcentaje</label>
+          	<input type="number" step="0.01" class="form-control rgt" id ="porcentaje" min="0.00" max="100.00" name="porcentaje" placeholder="Type here..." required>
+        </div>
+        </div>
+        </div>
+        <dif class="row text-center">
+				<div class="col-md-24 col-sm-12 ">
+					<div class="form-group">
+						<label for="Descripción">Descripción de Actividad</label>
+						<textarea class="form-control TextM" name="description" rows="6" id="comment" placeholder="Type here..."></textarea>
+					</div>
+				</div>
+			</dif>
+		<div class="col-md-6 col-sm-6">
+					<button type="submit" class="btn btn-default l">Crear Actividad</button>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<button type="submit" class="btn btn-default r" formaction="/adminClass" formmethod="GET">Cancelar creacion</button>
+				</div>
+      </section>
