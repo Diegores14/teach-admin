@@ -5,7 +5,7 @@
 			<div class="row" style="text-align:center;">
 				<div class="col-md-12">
 					<h2>Crear Estudiantes</h2>
-					<p class="descReg">Crear estudiantes para el curso <%= Nombre del curso %> </p>
+					<p class="descReg">Crear estudiante</p>
 				</div>
 			</div>
 		</div>
@@ -13,7 +13,7 @@
 
 	
 	<section>
-		<form class="container" action="/completarUsuario" method="POST" enctype="multipart/form-data">
+		<form class="container" action="/createstudent" method="POST" enctype="multipart/form-data">
 			<div class="row container-fluid">
 				<div class="col-md-12 text-center">
 					<img src="img/Users/<%= user.photo%>" class="photoPro"> 
@@ -37,7 +37,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 						<label>Numero de Identificación</label>
-          				<input class="form-control rgt number" name="document" placeholder="Escriba aqui..." required>
+          				<input class="form-control rgt number" name="Codigo" placeholder="Escriba aqui..." required>
         			</div>	
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Apellido</label>
-          				<input type="text" class="form-control rgt" name="firstName" placeholder="Escriba aqui.." required>
+          				<input type="text" class="form-control rgt" name="lastName" placeholder="Escriba aqui.." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
