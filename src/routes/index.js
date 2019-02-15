@@ -81,6 +81,11 @@ router.get('/updateUser', isAuthenticated, isAuthenticatedEmail, isComplete, (re
   res.render('updateUser',{ user })
 })
 
+router.get('/listStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  res.render('listStudent',{ user })
+})
+
 router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
   var courseName = ""

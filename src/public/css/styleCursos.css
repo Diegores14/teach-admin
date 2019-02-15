@@ -30,7 +30,6 @@ p.cod{
 	line-height: normal;
 	font-size: 10px;
 	text-transform: uppercase;
-
 	color: #F27A54;
 }
 
@@ -49,24 +48,23 @@ section.curso p.name{
 	font-weight: normal;
 	line-height: 28px;
 	font-size: 24px;
-
 	color: #FFFFFF;
 }
 
-section.curso .col-md-6 .btn.r{
+section .col-md-6 .btn.r{
 	color: #FFF;
 	padding: 1% auto;
-	margin: auto 10% auto 50%;
+	margin: 5% 10% auto 50%;
 	text-transform: uppercase;
 	border-radius: 26px;
 	border: 0 solid #FFF;
 	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
 }
 
-section.curso .col-md-6 .btn.l{
+section .col-md-6 .btn.l{
 	color: #FFF;
 	padding: 1% auto;
-	margin: auto 30% auto 10%;
+	margin: 5% 30% auto 10%;
 	text-transform: uppercase;
 	border-radius: 26px;
 	border: 0 solid #FFF;
@@ -75,7 +73,7 @@ section.curso .col-md-6 .btn.l{
 
 @media (max-width: 1000px){
 
-	section.curso .col-sm-12 .btn.l{
+	section.curso .col-sm-6 .btn.l{
 		color: #FFF;
 		padding: 1% auto;
 		margin: 2% 28%;
@@ -85,9 +83,38 @@ section.curso .col-md-6 .btn.l{
 		background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
 	}
 
-	section.curso .col-sm-12 .btn.r{
+	section.curso .col-sm-6 .btn.r{
 		color: #FFF;
 		padding: 1% auto;
+		margin: 2% 20%;
+		text-transform: uppercase;
+		border-radius: 26px;
+		border: 0 solid #FFF;
+		background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+	}
+
+	section.curso .TextM{
+		width: 60%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media (max-width: 750px){
+
+	section.curso .col-xs-6 .btn.l{
+		color: #FFF;
+		padding: 1% 10%;
+		margin: 2% 20%;
+		text-transform: uppercase;
+		border-radius: 26px;
+		border: 0 solid #FFF;
+		background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
+	}
+
+	section.curso .col-xs-6 .btn.r{
+		color: #FFF;
+		padding: 1% 10%;
 		margin: 2% 20%;
 		text-transform: uppercase;
 		border-radius: 26px;
