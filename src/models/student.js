@@ -14,3 +14,5 @@ const studentSchema = new Schema({
   School: String,
   photo: String // URL Where I'm going to store the image
 })
+
+module.exports = mongoose.model('students', studentSchema)

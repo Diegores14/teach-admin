@@ -12,8 +12,10 @@ const async = require('async')
 const CoEsCi = require('country-state-city')
 const multer = require('multer')
 const uploadDocent = multer({ dest: path.resolve('src/public/img/Users/') })
+const uploadStudent = multer({ dest: path.resolve('src/public/img/Students/') })
 const fs = require('fs')
 const svgCaptcha = require('svg-captcha')
+const STUDENT = require('../models/student')
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
@@ -279,9 +281,29 @@ router.get('/comfirmation/:token', (req, res, next) => {
   })
 })
 
-router.get('/createstudent', (req, res, next) => {
-  console.log(req.user)
-  res.render('createStudent', req.user)
+router.get('/createstudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req, res, next) => {
+  var user = req.user
+  res.render('createStudent', user)
+})
+
+router.post('/createstudent', isAuthenticated, isAuthenticatedEmail, isComplete, uploadStudent.single('avatar'), (req, res, next) => {
+  console.log(req.body)
+  STUDENT.findOne({ Codigo : req.body.Codigo }, (err, student) => {
+    if(!err) {
+      if(!student) {
+        console.log(req.body)
+        student = new STUDENT()
+        student.firstName = req.body.firstName
+        student.Codigo = req.body.Codigo
+        student.lastName = req.body.lastName
+        student.email = req.body.email
+        student.save()
+      }
+    } else {
+      console.log(err)
+    }
+  })
+  res.redirect('/createstudent')
 })
 
 // Esto es para saber su esta autenticado algun usuario y de esta forma poder dejarlo acceder a la pagina.
