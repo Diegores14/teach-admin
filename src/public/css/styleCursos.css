@@ -1,3 +1,16 @@
+.dot{
+	max-width: 4vw;
+	margin: -20% 0% -20% 0%;
+}
+
+.courseList a{
+	color: #CBCFD4;
+}
+
+
+.courseList a:hover, .courseList a:focus{
+	color: #FFF;
+}
 
 section.curso{
 	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);

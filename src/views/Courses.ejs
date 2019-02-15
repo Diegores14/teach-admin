@@ -18,8 +18,24 @@
 					<div class="col-sm-4">  
 						<div class="tarcurso">
 							<div class="row container-fluid">
-								<div class="col-sm-12">
-									<a href="#"><img src="img/dots.png" alt="" class="dot"></a>
+								<div class="col-sm-12" style="padding-left: 23vw;">
+									<div class="active dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/dots.png" alt="" class="dot"></a>
+										<ul class="dropdown-menu">
+											<div class="navbar-list">
+												<div class="row">
+													<p>
+								                        <a href="/editCourses?cod=<%= Courses[i*3 + j].cod %>" class="courseList" style="text-decoration: none;  color: #CBCFD4;">Editar curso</a>
+								                      </p>
+												</div>
+												<div class="row">
+													<p>
+								                        <a href="/adminClass?cod=<%= Courses[i*3 + j].cod %>" class="courseList" style="text-decoration: none;  color: #CBCFD4;">Crear Actividad</a>
+								                      </p>
+												</div>
+											</div>
+										</ul>
+									</div>
 								</div>
 							</div>
 							<div class="row container-fluid">
