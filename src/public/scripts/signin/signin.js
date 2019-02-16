@@ -22,17 +22,18 @@ function getCaptcha() {
 
 getCaptcha()
 
-captcha.onkeydown = function(event) {
+/*captcha.onkeydown = function(event) {
     if(event.key == 'Enter') {
         return false
     } else {
         return true
     }
-}
+}*/
 
 formulario.onsubmit = function() {
     var ans = true
-    if(textcaptcha != captcha.value) {
+    var captcha1 = document.getElementById('captcha')
+    if(textcaptcha != captcha1.value) {
         ans = false
         getCaptcha()
         captcha.value = ''
