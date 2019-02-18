@@ -19,7 +19,7 @@ const svgCaptcha = require('svg-captcha')
 const STUDENT = require('../models/student')
 const jsonfile = require('jsonfile')
 const csv= require('fast-csv');
-
+const moment = require('moment');
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
@@ -99,9 +99,22 @@ router.get('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (re
 router.post('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   req.body.data.forEach(function(std){
     STUDENT.findOneAndUpdate({ Codigo: std[0] }, { $push: { courses: req.body.idC, coursesName: req.body.nm } }, (err, doc) => { 
-      console.log(doc._id)
+      console.log("ID: "+doc._id)
       Course.findByIdAndUpdate(req.body.idC, { $push: { students: [doc._id] }},function(err, course){
-      console.log(course)
+        console.log(course)
+        for(var i = 0; i<course.shedule.length; i++){
+          course.shedule[i].students.push(doc._id)
+          console.log(course.shedule[i])
+        }
+        for(var j = 0; j<course.activities.length; j++){
+          course.activities[j].grades.push([doc._id,null])
+          console.log(course.activities[j])
+        }
+        course.save(function(err){
+          if(err){
+            console.error("Error")
+          }
+        })
       })
     })
   })
@@ -126,8 +139,6 @@ router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (re
           return res.redirect('/courses')
         }
         courseName = course.name
-        console.log(req.query.id)
-        console.log(courseName)
         res.render('adminClass',{ user , name: courseName, id : course._id})
       })
 })
@@ -136,9 +147,24 @@ router.post('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (r
   console.log(req.body)
   req.body.date = Date(req.body.date)
   console.log(req.body)
-  Course.findByIdAndUpdate(req.query.id, { $push: {activities : req.body} }, (err, course) => {
-    res.redirect('/courses')
+  req.body["grades"] = []
+  Course.findById(req.query.id, function (err, course) {
+      console.log(course)
+      console.log(course.students.length)
+      for(var i=0; i < course.students.length ; i++){
+          req.body.grades.push([course.students[i],null])
+          console.log("Añadio")
+          console.log(req.body)
+        }
+      course.activities.push(req.body)
+      course.save(function(err){
+        if(err){
+          console.error("Error")
+        }
+      })
+
   })
+  res.redirect('/courses')
 })
 
 router.get('/importStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
@@ -271,7 +297,12 @@ router.get('/CreateCourse', isAuthenticated, isAuthenticatedEmail, isComplete, (
 
 // create Course and Upate User
 router.post('/CreateCourse', isAuthenticated, async (req, res, next) => {
-  req.body['duration'] = { start : Date(req.body.dateStart), end : Date(req.body.dateEnd) }
+  var timeStart = req.body.dateStart.split("-")
+  var timeEnd = req.body.dateEnd.split("-")
+  var dateStart = new Date(timeStart[0],timeStart[1]-1,timeStart[2])
+  var dateEnd = new Date(timeEnd[0],timeEnd[1]-1,timeEnd[2])
+  req.body['duration'] = { start : dateStart, end : dateEnd}
+  req.body["shedule"] = makeSchedule(req.body)
   const newCourse = new Course(req.body)
   await newCourse.save()
   User.findOneAndUpdate({ _id: req.user._id }, { $push: { courses: newCourse._id } }, (err, doc) => { // hay que verificar si hay error
@@ -472,6 +503,25 @@ function isComplete(req, res, next){
     return next()
   }
   res.redirect('/completarUsuario')
+}
+
+function makeSchedule(data){
+  var days = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"]
+  var start = moment(data.dateStart);
+  var end = moment(data.dateEnd);
+  var dif = end.diff(start,'days');
+  var newDate = new Date(data.dateStart)
+  newDate.setDate(newDate.getDate() + 1)
+  var schedule = []
+  var actual = ""
+  for (var i = 0; i <= dif; i++) {
+    actual = newDate.getFullYear()+"-"+newDate.getMonth()+"-"+newDate.getDate()
+    if(data.hasOwnProperty(days[newDate.getDay()])){
+      schedule.push({"Day":actual,"HI": data[days[newDate.getDay()]+"I"] ,"HF":data[days[newDate.getDay()]+"F"], "students":[]})
+    }
+    newDate.setDate(newDate.getDate() + 1)
+  }
+  return schedule
 }
 
 

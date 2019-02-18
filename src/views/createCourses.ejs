@@ -55,7 +55,7 @@
 					<div class="form-group r">
 			          	<label>Fecha de inicio</label>
 			          	<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
-        	</div>
+        			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
@@ -64,14 +64,386 @@
         			</div>	
 				</div>
 			</div>
-			<dif class="row text-center">
-				<div class="col-md-12">
-					<div class="form-group">
+			<div class="row text-center">
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group r">
+			          	<label>Horario</label>
+			          	<div class="row" style="margin-bottom: 0% !important">
+			          		<div class="col-md-6 col-sm-12 text-center" style="margin-bottom: 0% !important">
+								<div class="form-group">
+						          	<label>Dia</label>
+			        			</div>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+					          		<div class="col-md-6 col-sm-12 text-center" style="margin-bottom: 0% !important">
+										<div class="form-group">
+								          	<label>Inicio</label>
+					        			</div>
+									</div>
+									<div class="col-md-6 col-sm-12 text-center" >
+										<div class="form-group">
+							          		<label>Fin</label>
+					        			</div>	
+									</div>
+					          	</div>
+							</div>
+			          	</div>
+			          	<div class="row">
+							<div class="col-md-6 col-sm-12 text-left">
+			          			<label><input type="checkbox" id="1" onclick="enable(this)" name="Lunes"/> Lunes</label>
+			          		</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 l" style="margin: auto 0%;">
+							          	<select name="LunesI" class="form-control" id="LunesI" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+			          				<div class="col-md-6 col-sm-6 r" style="margin: auto 0%;">
+			          					<select name="LunesF" class="form-control" id="LunesF" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+								</div>
+							</div>
+			          	</div>
+			          	<div class="row">
+			          		<div class="col-md-6 col-sm-12 text-left" >
+			          			<label><input type="checkbox" id="2" onclick="enable(this)" name="Martes"/> Martes</label>
+			          		</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 l" style="margin: auto 0%;">
+							          	<select name="MartesI" class="form-control" id="MartesI" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+			          				<div class="col-md-6 col-sm-6 r" style="margin: auto 0%;">
+			          					<select name="MartesF" class="form-control" id="MartesF" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+								</div>
+							</div>
+			          	</div>
+			          	<div class="row">
+			          		<div class="col-md-6 col-sm-12 text-left">
+			          			<label><input type="checkbox" id="3" onclick="enable(this)" name="Miercoles"/> Miercoles</label>
+			          		</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 l" style="margin: auto 0%;">
+							          	<select name="MiercolesI" class="form-control" id="MiercolesI" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+			          				<div class="col-md-6 col-sm-6 r" style="margin: auto 0%;">
+			          					<select name="MiercolesF" class="form-control" id="MiercolesF" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+								</div>
+							</div>
+			          	</div>
+			          	<div class="row">
+			          		<div class="col-md-6 col-sm-12 text-left">
+			          			<label><input type="checkbox" id="4" onclick="enable(this)" name="Jueves"/> Jueves</label>
+			          		</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 l" style="margin: auto 0%;">
+							          	<select name="JuevesI" class="form-control" id="JuevesI" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+			          				<div class="col-md-6 col-sm-6 r" style="margin: auto 0%;">
+			          					<select name="JuevesF" class="form-control" id="JuevesF" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+								</div>
+							</div>			          	</div>
+			          	<div class="row">
+			          		<div class="col-md-6 col-sm-12 text-left">
+			          			<label><input type="checkbox" id="5" onclick="enable(this)" name="Viernes"/> Viernes</label>
+			          		</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 l" style="margin: auto 0%;">
+							          	<select name="ViernesI" class="form-control" id="ViernesI" disabled>
+							          		
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+			          				<div class="col-md-6 col-sm-6 r" style="margin: auto 0%;">
+			          					<select name="ViernesF" class="form-control" id="ViernesF" disabled>
+			          						
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+								</div>
+							</div>
+			          	</div>
+			          	<div class="row">
+			          		<div class="col-md-6 col-sm-12 text-left">
+			          			<label><input type="checkbox" id="6" onclick="enable(this)" name="Sabado"/> Sabado</label>
+			          		</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 l" style="margin: auto 0%;">
+							          	<select name="SabadoI" class="form-control" id="SabadoI" disabled>
+							          		
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+			          				<div class="col-md-6 col-sm-6 r" style="margin: auto 0%;">
+			          					<select name="SabadoF" class="form-control" id="SabadoF" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+								</div>
+							</div>
+			          	</div>
+			          	<div class="row">
+			          		<div class="col-md-6 col-sm-12 text-left">
+			          			<label><input type="checkbox" id="7" onclick="enable(this)" name="Domingo"/> Domingo</label>
+			          		</div>
+							<div class="col-md-6 col-sm-12">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 l" style="margin: auto 0%;">
+							          	<select name="DomingoI" class="form-control" id="DomingoI" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+			          				<div class="col-md-6 col-sm-6 r" style="margin: auto 0%;">
+			          					<select name="DomingoF" class="form-control" id="DomingoF" disabled>
+							          		<option value="6">6:00</option>
+							          		<option value="7">7:00</option>
+							          		<option value="8">8:00</option>
+							          		<option value="9">9:00</option>
+							          		<option value="10">10:00</option>
+							          		<option value="11">11:00</option>
+							          		<option value="12">12:00</option>
+							          		<option value="13">13:00</option>
+							          		<option value="14">14:00</option>
+							          		<option value="15">15:00</option>
+							          		<option value="16">16:00</option>
+							          		<option value="17">17:00</option>
+							          		<option value="18">18:00</option>
+							          		<option value="19">19:00</option>
+							          		<option value="20">20:00</option>
+							          		<option value="21">21:00</option>
+							          	</select>
+			          				</div>
+								</div>
+							</div>
+			          	</div>
+        			</div>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<div class="form-group l">
 						<label for="Descripción">Descripción del curso</label>
-						<textarea class="form-control TextM" name="description" rows="5" id="comment" placeholder="Type here..."></textarea>
+						<textarea class="form-control" name="description" rows="10" id="comment" placeholder="Type here..."></textarea>
 					</div>
 				</div>
-			</dif>
+			</div>
+
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-6">
 					<button type="submit" class="btn btn-default r" formaction="/createCourse" formmethod="GET">Cancelar creacion</button>
@@ -82,3 +454,20 @@
 			</div>
 		</form>
 	</section>
+
+	<script>
+		function enable(a){
+			var days = {"1":["LunesI","LunesF"],
+						"2": ["MartesI","MartesF"],
+						"3": ["MiercolesI","MiercolesF"],
+						"4": ["JuevesI","JuevesF"],
+						"5": ["ViernesI","ViernesF"],
+						"6": ["SabadoI","SabadoF"],
+						"7": ["DomingoI","DomingoF"]
+						};
+		  	for(x in days[a.id]){
+		  		document.getElementById(days[a.id][x]).disabled = !(document.getElementById(days[a.id][x]).disabled);
+		  	}
+
+		}
+	</script>

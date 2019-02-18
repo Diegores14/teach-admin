@@ -71,6 +71,12 @@ section .col-md-6 .btn.l{
 	background-image: linear-gradient(to right, #76323F -21.05%, #C09F80 121.05%);
 }
 
+.day{
+	padding: auto 0%  !important;
+	margin: auto  0% !important;
+	width: 100%;
+}
+
 @media (max-width: 1000px){
 
 	section.curso .col-sm-6 .btn.l{
