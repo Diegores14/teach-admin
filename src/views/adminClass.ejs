@@ -13,7 +13,7 @@
 
 	
 	<section>
-		<form class="container" action="/adminClass?id=<%=id%>" method="POST">
+		<form  id = "formulario" class="container" action="/adminClass?id=<%=id%>" method="POST">
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
@@ -38,12 +38,8 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
           				<label>porcentaje</label>
-						  <select id = "state" name="percentage" class="form-control" id="Numero" required>
-      							<option value="33.33">33.33</option>
-      							<option value="30">30</option>
-      							<option value="20">20</option>
-      							<option value="25">25</option>
-			          	</select>
+						  <input id = "percentage" name="percentage" class="form-control" required>
+      							
         			</div>
 				</div>
 			</div>
@@ -66,7 +62,5 @@
 			</div>
     	</form>
 	</section>
-	<script type="text/javascript" src="scripts/emailComfirmation.js"></script>
-	<script type="text/javascript" src="scripts/numberAutentication.js"></script>
-	<script type="text/javascript" src = "scripts/passwordAutentication.js"></script>
-  	<script src = "/scripts/request.js"></script>
+	<script src = "/scripts/request.js"></script>
+	<script src="/scripts/adminClass.js"></script>
