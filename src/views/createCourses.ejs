@@ -12,7 +12,7 @@
 	</section>
 
 	<section class="curso">
-		<form class="container" action="/createCourse" method="POST">
+		<form id = "formulario" class="container" action="/createCourse" method="POST">
 			<div class="row text-center">
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
@@ -54,13 +54,13 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 			          	<label>Fecha de inicio</label>
-			          	<input type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
+			          	<input id = "dateStart" type="date" class="form-control rgt" name="dateStart" placeholder="Escriba aquí..." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 		          		<label>Fecha de fin</label>
-			          	<input type="date" class="form-control rgt" name="dateEnd" placeholder="Escriba aquí..." required>
+			          	<input type="date" id = "dateEnd" class="form-control rgt" name="dateEnd" placeholder="Escriba aquí..." required>
         			</div>	
 				</div>
 			</div>
@@ -471,3 +471,4 @@
 
 		}
 	</script>
+	<script src = "/scripts/createCourse.js"></script>
