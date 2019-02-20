@@ -13,9 +13,13 @@ const CoEsCi = require('country-state-city')
 const multer = require('multer')
 const uploadDocent = multer({ dest: path.resolve('src/public/img/Users/') })
 const uploadStudent = multer({ dest: path.resolve('src/public/img/Students/') })
+const uploadListStudent = multer({ dest: path.resolve('src/public/csv/Students/') })
 const fs = require('fs')
 const svgCaptcha = require('svg-captcha')
 const STUDENT = require('../models/student')
+const jsonfile = require('jsonfile')
+const csv= require('fast-csv');
+
 
 // GET para la dirección raiz muestra la pagina principal
 router.get('/', isAuthenticated, isAuthenticatedEmail, (req, res, next) => {
@@ -81,9 +85,35 @@ router.get('/updateUser', isAuthenticated, isAuthenticatedEmail, isComplete, (re
   res.render('updateUser',{ user })
 })
 
+router.get('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  STUDENT.find({idDocent: req.user._id, courses : {$nin: [req.query.id]} }, function(err, students){
+    console.log(students)
+    res.render('addStudent',{ user, students, id: req.query.id})
+  })
+})
+
+router.post('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  console.log(req.body)
+  req.body.data.forEach(function(std){
+    STUDENT.findOneAndUpdate({ Codigo: std[0] }, { $push: { courses: req.body.idC } }, (err, doc) => { 
+      console.log(doc._id)
+      Course.findByIdAndUpdate(req.body.idC, { $push: { students: [doc._id] }},function(err, course){
+      console.log(course)
+      })
+    })
+  })
+  res.redirect('/courses')
+})
+
 router.get('/listStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
-  res.render('listStudent',{ user })
+  STUDENT.find({idDocent: req.user._id }, function(err, students){
+    Course.find(function(err, course){
+      console.log(course)
+      res.render('listStudent',{ user, students, course})
+    })
+  })
 })
 
 router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
@@ -107,6 +137,46 @@ router.post('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (r
     res.redirect('/courses')
   })
 })
+
+router.get('/importStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  res.render('importStudent',{ user })
+})
+
+router.post('/importStudent', isAuthenticated, isAuthenticatedEmail, isComplete, uploadListStudent.single('students'), (req,res,next) => {
+  const user = req.user
+  if (req.file) {
+    var stream = fs.createReadStream(req.file.path);
+    csv.fromStream(stream,{headers : true}).on("data",function(data){
+      console.log(data)
+
+      STUDENT.findOne({ Codigo : data.Codigo, idDocent : req.user._id }, async (err, student) => {
+        if(!err) {
+          if(!student) {
+            student = new STUDENT()
+            student.firstName = data.firstName
+            student.Codigo = data.Codigo
+            student.lastName = data.lastName
+            student.email = data.email
+            student.school = data.school
+            student.idDocent = req.user._id
+            await student.save()
+            User.findByIdAndUpdate(req.user._id, {$push: { students: student._id} }, (err, doc) => {
+            })
+          }
+        } else {
+          console.log(err)
+        }
+      })
+
+    }).on("end",function(){
+      console.log("Listo.")
+    })
+  }
+  res.render('importStudent',{ user })
+})
+
+
 
 router.get('/editCourses', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user

@@ -1,0 +1,79 @@
+<%- layout('layouts/session.ejs') %>
+
+
+<section class="curso">
+	<div class="container">
+		<div class="row" style="text-align:center;">
+			<div class="col-md-12">
+				<h2>Matricular estudiantes</h2>
+				<p class="descReg">Docente <%= user.firstName%> <%= user.lastName%></p>
+				<p id="idCurso" hidden><%=id%></p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<form id="Lista" method="POST">
+		<div class="listaSTD panel panel-default">
+			<table class="table" id="example">
+				<thead>
+					<tr>
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombres</th>
+						<th scope="col">Apellidos</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% if(students.length > 0){ %>
+						<% for(var i = 0; i < students.length ; i++){ %>
+						    <tr>
+						      <td><%= students[i].Codigo %></td>
+						      <td><%= students[i].firstName %></td>
+						      <td><%= students[i].lastName %></td>
+						    </tr>
+						<% } %>
+					<% } %>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombres</th>
+						<th scope="col">Apellidos</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</form>
+	<button id="button" class="btn btn-default stdbtn">Agregar estudiantes</button>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var table = $('#example').DataTable({
+			"searching": false,
+			"pagingType": "full_numbers",
+			"scrollY":        "20vw",
+		    "scrollCollapse": true,
+		    "bInfo" : false,
+		    "language": {"info": "Mostrando desde _START_ hasta _END_ de un total de _TOTAL_ entradas"},
+		    "paging":         false
+
+		});
+
+		$('#example tbody').on( 'click', 'tr', function () {
+		    $(this).toggleClass('selected');
+		} );
+
+		$('#button').click( function () {
+			var datos = table.rows('.selected').data().toArray();
+			var idC = document.getElementById("idCurso").innerHTML;
+			 $.post('/addStudent',{data:datos, idC: idC}, function(data){
+			 window.location.replace("/courses");
+		    });
+		   
+		});
+	});
+</script>

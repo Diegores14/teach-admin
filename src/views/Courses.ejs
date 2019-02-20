@@ -12,44 +12,52 @@
 	</section>
 
 	<section class="curso">
+
 		<% for(var i = 0; i <= Courses.length/3 ; i++){ %>
 			<div class="row">
 				<% for(var j = 0; j<3 && j + i*3 < Courses.length; j++){ %>
-					<div class="col-sm-4">  
-						<div class="tarcurso">
-							<div class="row container-fluid">
-								<div class="col-sm-12" style="padding-left: 23vw;">
-									<div class="active dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/dots.png" alt="" class="dot"></a>
-										<ul class="dropdown-menu">
-											<div class="navbar-list">
-												<div class="row">
-													<p>
-								                        <a href="/editCourses?id=<%= Courses[i*3 + j]._id %>" class="courseList" style="text-decoration: none;  color: #CBCFD4;">Editar curso</a>
-								                      </p>
+					<% if(Courses[i*3 + j] != null){ %>
+						<div class="col-sm-4">  
+							<div class="tarcurso">
+								<div class="row container-fluid">
+									<div class="col-sm-12" style="padding-left: 23vw;">
+										<div class="active dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/dots.png" alt="" class="dot"></a>
+											<ul class="dropdown-menu">
+												<div class="navbar-list">
+													<div class="row">
+														<p>
+									                        <a href="/editCourses?id=<%= Courses[i*3 + j]._id %>" class="courseList" style="text-decoration: none;  color: #CBCFD4;">Editar curso</a>
+									                      </p>
+													</div>
+													<div class="row">
+														<p>
+									                        <a href="/adminClass?id=<%= Courses[i*3 + j]._id %>" class="courseList" style="text-decoration: none;  color: #CBCFD4;">Crear Actividad</a>
+									                      </p>
+													</div>
+													<div class="row">
+														<p>
+									                        <a href="/addStudent?id=<%= Courses[i*3 + j]._id %>" class="courseList" style="text-decoration: none;  color: #CBCFD4;">Agregar estudiantes</a>
+									                      </p>
+													</div>
 												</div>
-												<div class="row">
-													<p>
-								                        <a href="/adminClass?id=<%= Courses[i*3 + j]._id %>" class="courseList" style="text-decoration: none;  color: #CBCFD4;">Crear Actividad</a>
-								                      </p>
-												</div>
-											</div>
-										</ul>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="row container-fluid">
+									<div class="col-sm-12">
+										<p class="cod"> <%= Courses[i*3 + j].cod %> </p>
+									</div>
+								</div>
+								<div class="row container-fluid">
+									<div class="col-sm-12">
+										<p class="name"> <%= Courses[i*3 + j].name %> </p>
 									</div>
 								</div>
 							</div>
-							<div class="row container-fluid">
-								<div class="col-sm-12">
-									<p class="cod"> <%= Courses[i*3 + j].cod %> </p>
-								</div>
-							</div>
-							<div class="row container-fluid">
-								<div class="col-sm-12">
-									<p class="name"> <%= Courses[i*3 + j].name %> </p>
-								</div>
-							</div>
 						</div>
-					</div>
+					<% } %>
 				<% } %>
 			</div>
 		<% } %>

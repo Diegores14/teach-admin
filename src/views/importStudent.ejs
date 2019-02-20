@@ -1,0 +1,34 @@
+<%- layout('layouts/session.ejs') %>
+
+
+<section class="curso">
+	<div class="container">
+		<div class="row" style="text-align:center;">
+			<div class="col-md-12">
+				<h2>Importar estudiantes</h2>
+				<p class="descReg"> Docente <%= user.firstName%> <%= user.lastName%> </p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	<form class="container" action="/importStudent" method="POST" enctype="multipart/form-data">
+		<div class="row" style="margin: 0 35%">
+			<div class="col-md-12">
+				<div class="upload-btn-wrapper">
+				  <button class="btn">Cargar csv estudiantes</button>
+				  <input type="file" name="students" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-12 col-xs-6">
+				<button type="submit" class="btn btn-default r">Completar</button>
+			</div>
+			<div class="col-md-6 col-sm-12 col-xs-6">
+				<button type="submit" class="btn btn-default l" formaction="/" formmethod="GET">Cancelar</button>
+			</div>
+		</div>
+	</form>
+</section>

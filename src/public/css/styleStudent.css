@@ -1,0 +1,57 @@
+thead, tfoot{
+	background-color: #C09F80 !important;
+	color: #FFF;
+}
+
+tbody tr:nth-child(odd){
+	background-color: #76323F !important;
+	color: #FFF !important;
+}
+
+tbody tr:nth-child(even){
+	background-color: #8b323f !important;
+	color: #FFF !important;
+}
+
+tbody tr:hover{
+	background-color: #764e3f !important;
+	color: #FFF !important;
+}
+
+tbody tr.selected{
+	color: #FFF !important;
+	background-color: #808080 !important;
+}
+
+table{
+	border-collapse: collapse;
+  	border-radius: 1em;
+}
+
+.listaSTD{
+	margin-left: 10vw;
+	margin-right: 10vw;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: white !important;
+    border: 1px solid #C09F80!important;
+    background-color: #C09F80!important;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2980B9), color-stop(100%, #2980B9))!important;
+    background: -webkit-linear-gradient(top,  #76323F 0%, #C09F80 186.42%)!important;
+    background: -moz-linear-gradient(top,  #76323F 0%, #C09F80 186.42%)!important;
+    background: -ms-linear-gradient(top,  #76323F 0%, #C09F80 186.42%)!important;
+    background: -o-linear-gradient(top,  #76323F 0%, #C09F80 186.42%)!important;
+    background: linear-gradient(to bottom, #76323F 0%, #C09F80 186.42%) !important;
+}
+ 
+.dataTables_wrapper .dataTables_paginate .paginate_button:active, .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: #76323F !important;
+  color: white!important;
+} 
+
+
+button.stdbtn{
+	margin-left: 42%;
+	padding: 1% 2% 1% 2%;
+}

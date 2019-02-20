@@ -12,11 +12,34 @@
 	</section>
 
 	<section>
-		<% for(var i = 0; i <= Student.length ; i++){ %>
-			<div class="row">
-				<div class="col-sm-12">
-					
-				</div>
-			</div>
-		<% } %>
+		<div class="listaSTD panel panel-default">
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Nombres</th>
+			      <th scope="col">Apellidos</th>
+			      <th scope="col">Curso Matriculado</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				<% for(var i = 0; i < students.length ; i++){ %>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td><%= students[i].firstName %></td>
+				      <td><%= students[i].lastName %></td>
+				      <td>
+			      	 	<% course.forEach(function(crs){ %>
+			      	 		<% students[i].courses.forEach(function(scrs){ %>
+						      	<%if (crs._id == scrs) { %>
+						      		crc.name
+								<% } %>
+							<% }); %>
+						<% }); %>
+				      </td>
+				    </tr>
+				<% } %>
+			  </tbody>
+			</table>
+		</div>
 	</section>
