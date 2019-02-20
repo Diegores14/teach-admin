@@ -1,2 +1,4 @@
 node_modules/
 package-lock.json
+src/public/csv/
+src/public/img/Users
