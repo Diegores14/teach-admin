@@ -230,9 +230,15 @@ router.get('/editCourses', isAuthenticated, isAuthenticatedEmail, isComplete, (r
           return res.redirect('/courses')
         }
         courseName = course.name
+        var start = course.duration.start.getFullYear()+
+                                    "-"+organizarMes(course.duration.start.getMonth())+
+                                    "-"+organizarDia(course.duration.start.getDate())
+        var end = course.duration.end.getFullYear()+
+                                    "-"+organizarMes(course.duration.end.getMonth())+
+                                    "-"+organizarDia(course.duration.end.getDate())
         console.log(req.query.id)
         console.log(courseName)
-        res.render('editCourses',{ user , course : course})
+        res.render('editCourses',{ user , course : course, start, end})
       })
 })
 
@@ -535,5 +541,20 @@ function makeSchedule(data){
   return schedule
 }
 
+function organizarMes(mes) {
+  if(mes <10) {
+    return '0' + mes
+  } else {
+    return mes
+  }
+}
+
+function organizarDia(dia) {
+  if(dia <10) {
+    return '0' + dia
+  } else {
+    return dia
+  }
+}
 
 module.exports = router
