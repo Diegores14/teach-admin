@@ -4,7 +4,7 @@ function ajaxGet(url, callback) {
     req.open("Get", url, true)
     req.addEventListener("load", () => {
         if(req.status >= 200 && req.status < 400 ){
-            callback(null, req.responseText)
+            return callback(null, req.responseText)
         } else {
             callback(req.status + " " + req.statusText)
         }

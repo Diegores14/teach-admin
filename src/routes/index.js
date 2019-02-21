@@ -138,6 +138,7 @@ router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (re
           req.flash('noUserMessage', 'No existe un curso')
           return res.redirect('/courses')
         }
+        req.session.course = req.query.id
         courseName = course.name
         res.render('adminClass',{ user , name: courseName, id : course._id})
       })
@@ -470,6 +471,16 @@ router.post('/createstudent', isAuthenticated, isAuthenticatedEmail, isComplete,
     }
   })
   res.redirect('/createstudent')
+})
+
+// API
+
+router.get('/api/getdatecourse', (req, res) => {
+  Course.findById(req.session.course, (err, course) => {
+    if(!err) {
+      res.send(course.duration)
+    }
+  })
 })
 
 // Esto es para saber su esta autenticado algun usuario y de esta forma poder dejarlo acceder a la pagina.

@@ -11,12 +11,11 @@ function getCaptcha() {
             var captcha = document.getElementById('divcaptcha')
             captcha.innerHTML = data.substr(0, 5) + "id = \"svgcaptcha\" " + data.substring(5, data.length -1)
         }
-    })
-    
-    ajaxGet('/textcaptcha', (err, data) => {
-        if(!err) {
-            textcaptcha = data
-        }
+        ajaxGet('/textcaptcha', (err, data) => {
+            if(!err) {
+                textcaptcha = data
+            }
+        })
     })
 }
 
@@ -32,12 +31,13 @@ getCaptcha()
 
 formulario.onsubmit = function() {
     var ans = true
-    var captcha1 = document.getElementById('captcha')
-    if(textcaptcha != captcha1.value) {
+    var captcha1 = document.getElementById('captcha').value
+    if(textcaptcha != captcha1) {
         ans = false
+        console.log('captcha incorrecto ' + textcaptcha + ' ' + captcha1)
         getCaptcha()
+        
         captcha.value = ''
-        console.log('captcha incorrecto')
     }
     
     if(/^\d+$/.test(documento.value) == false) {
