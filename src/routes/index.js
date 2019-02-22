@@ -281,6 +281,9 @@ router.post('/studentGrade', isAuthenticated, isAuthenticatedEmail, isComplete, 
         console.log(course.activities[pos])
 
         Course.findByIdAndUpdate(req.query.id, course, (err, doc) => {
+          doc.save((err)=>{
+            console.error(err)
+          })
           res.redirect("/Courses")
         })
     })
