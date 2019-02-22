@@ -11,7 +11,7 @@
 				<div class="col-md-12">
 					<div class="form-group m">
 						<label>Usuario</label>
-          	<input type="text" class="form-control rgt" name="username" placeholder="Type here..." required>
+          	<input id="username" type="text" class="form-control rgt" name="username" placeholder="Type here..." required>
         	</div>
 				</div>
 				<div class="col-md-12">
@@ -48,3 +48,7 @@
 	<script src="/scripts/numberAutentication.js"></script>
 	<script src="/scripts/request.js"></script>
 	<script src = "/scripts/signin/signin.js"></script>
+	<script src = "/scripts/Names.js"></script>
+	<script>
+		generateValidationName('username')
+	</script>

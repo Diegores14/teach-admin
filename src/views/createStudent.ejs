@@ -31,7 +31,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 						<label>Nombre</label>
-          				<input type="text" class="form-control rgt" name="firstName" placeholder="Escriba aqui..." required>
+          				<input id="firstName" type="text" class="form-control rgt" name="firstName" placeholder="Escriba aqui..." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
@@ -45,7 +45,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
           				<label>Apellido</label>
-          				<input type="text" class="form-control rgt" name="lastName" placeholder="Escriba aqui.." required>
+          				<input id="lastName" type="text" class="form-control rgt" name="lastName" placeholder="Escriba aqui.." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
@@ -80,4 +80,9 @@
 	<script type="text/javascript" src="scripts/emailComfirmation.js"></script>
 	<script type="text/javascript" src="scripts/numberAutentication.js"></script>
 	<script type="text/javascript" src = "scripts/passwordAutentication.js"></script>
-  	<script src = "/scripts/request.js"></script>
+	<script src = "/scripts/request.js"></script>
+	 <script src = "/scripts/Names.js"></script>
+	<script>
+		generateValidationName('firstName')
+		generateValidationName('lastName')
+	</script>

@@ -23,7 +23,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 						<label>Nombre de la materia</label>
-          	<input type="text" name="name" class="form-control rgt" placeholder="Type here...">
+          	<input id="name" type="text" name="name" class="form-control rgt" placeholder="Type here...">
         	</div>	
 				</div>
 			</div>
@@ -472,3 +472,7 @@
 		}
 	</script>
 	<script src = "/scripts/createCourse.js"></script>
+	<script src = "/scripts/Names.js"></script>
+	<script>
+		generateValidationName('name')
+	</script>

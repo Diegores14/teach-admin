@@ -12,13 +12,13 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 						<label>Nombres</label>
-          				<input type="text" class="form-control rgt" name="firstName" placeholder="Escriba aqui..." required>
+          				<input id="name" type="text" class="form-control rgt" name="firstName" placeholder="Escriba aqui..." required>
         			</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 						<label>Apellidos</label>
-          				<input type="text" class="form-control rgt" name="lastName" placeholder="Escriba aqui..." required>
+          				<input id="lastName" type="text" class="form-control rgt" name="lastName" placeholder="Escriba aqui..." required>
         			</div>	
 				</div>
 			</div>
@@ -94,3 +94,8 @@
 	<script type="text/javascript" src = "/scripts/passwordAutentication.js"></script>
 	<script src = "/scripts/request.js"></script>
 	<script src = "/scripts/signup/signup.js"></script>
+	<script src = "/scripts/Names.js"></script>
+	<script>
+		generateValidationName('name')
+		generateValidationName('lastName')
+	</script>

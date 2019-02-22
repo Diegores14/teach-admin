@@ -67,7 +67,7 @@
 				<div class="col-md-12" style="padding: 0% 25%">
 					<div class="form-group">
 			          	<label>Empresa</label>
-			          	<input type="text" class="form-control rgt" name="empresa" minlength="8" placeholder="Escriba aquí..." required>
+			          	<input id="company" type="text" class="form-control rgt" name="empresa" minlength="8" placeholder="Escriba aquí..." required>
 		        	</div>	
 				</div>
 			</div>
@@ -93,3 +93,7 @@
 		</form>
 	</section>
 	<script src = "/scripts/Register/complete.js"></script>
+	<script src = "/scripts/Names.js"></script>
+	<script>
+		generateValidationName('company')
+	</script>

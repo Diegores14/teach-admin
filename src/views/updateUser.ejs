@@ -57,7 +57,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 			          	<label>Empresa</label>
-			          	<input type="text" class="form-control rgt" name="empresa" minlength="8" placeholder="Escriba aquí..." required>
+			          	<input id="company" type="text" class="form-control rgt" name="empresa" minlength="8" placeholder="Escriba aquí..." required>
 		        	</div>	
 				</div>
 			</div>
@@ -87,3 +87,7 @@
 	<script type="text/javascript" src = "scripts/passwordAutentication.js"></script>
 	<script src = "/scripts/request.js"></script>
 	<script src = "/scripts/Register/complete.js"></script>
+	<script src = "/scripts/Names.js"></script>
+	<script>
+		generateValidationName('company')
+	</script>

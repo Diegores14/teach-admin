@@ -23,7 +23,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group l">
 						<label>Nombre de la materia</label>
-          	<input type="text" name="name" class="form-control rgt" value = "<%= course.name%>" >
+          	<input id="name" type="text" name="name" class="form-control rgt" value = "<%= course.name%>" >
         	</div>	
 				</div>
 			</div>
@@ -82,4 +82,8 @@
 		var typeNotes = document.getElementById('typeNotes')
 		typeCourse.value = type1
 		typeNotes.value = type2
+	</script>
+	<script src = "/scripts/Names.js"></script>
+	<script>
+		generateValidationName('name')
 	</script>
