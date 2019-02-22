@@ -17,7 +17,7 @@
 				<div class="col-md-6 col-sm-12">
 					<div class="form-group r">
 						<label>Codigo de la materia</label>
-          	<input type="text" name="cod" class="form-control rgt" value = "<%= course.cod%>">
+          	<input id="cod" type="text" name="cod" class="form-control rgt" value = "<%= course.cod%>">
         	</div>
 				</div>
 				<div class="col-md-6 col-sm-12">
@@ -86,4 +86,8 @@
 	<script src = "/scripts/Names.js"></script>
 	<script>
 		generateValidationName('name')
+	</script>
+	<script src="/scripts/codesCourse.js"></script>
+	<script>
+			generateValidationCode('cod')
 	</script>

@@ -13,8 +13,14 @@ function validationName(event) {
     }
     return true
 }
+function validationEspace(event) {
+    if(this.value == ' ') {
+        this.value = ''
+    }
+}
 
 function generateValidationName(id) {
     var element = document.getElementById(id)
     element.onkeydown = validationName
+    element.onkeyup = validationEspace
 }
