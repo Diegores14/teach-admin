@@ -9,12 +9,11 @@ function getCaptcha() {
         if(!err){
             var captcha = document.getElementById('divcaptcha')
             captcha.innerHTML = data.substr(0, 5) + "id = \"svgcaptcha\" " + data.substring(5, data.length -1)
-        }
-    })
-    
-    ajaxGet('/textcaptcha', (err, data) => {
-        if(!err) {
-            textcaptcha = data
+            ajaxGet('/textcaptcha', (err, data) => {
+                if(!err) {
+                    textcaptcha = data
+                }
+            })
         }
     })
 }
