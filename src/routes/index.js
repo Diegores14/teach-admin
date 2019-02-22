@@ -85,6 +85,38 @@ router.get('/updateUser', isAuthenticated, isAuthenticatedEmail, isComplete, (re
   res.render('updateUser',{ user })
 })
 
+router.get('/assist', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  STUDENT.find({idDocent: req.user._id, courses : {$in: [req.query.id]} }, function(err, students){
+    Course.findById(req.query.id,function(err, course){
+      res.render('assist',{ user, students, id: req.query.id, name: course.name})
+    })
+  })
+})
+
+router.post('/assist', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  req.body.data.forEach(function(std){
+    console.log(std[0])
+    STUDENT.find({Codigo: std[0]}, (err, doc) => { 
+      console.log("ID: "+doc)
+      console.log("ID: "+typeof doc)
+      Course.findByIdAndUpdate(req.body.idC, {},function(err, course){
+        console.log(course)
+        for(var i = 0; i<course.shedule.length; i++){
+          course.shedule[i].students.push(doc._id)
+          console.log(course.shedule[i])
+        }
+        course.save(function(err){
+          if(err){
+            console.error("Error")
+          }
+        })
+      })
+    })
+  })
+  res.redirect('/courses')
+})
+
 router.get('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
   STUDENT.find({idDocent: req.user._id, courses : {$nin: [req.query.id]} }, function(err, students){
@@ -101,11 +133,6 @@ router.post('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (r
     STUDENT.findOneAndUpdate({ Codigo: std[0] }, { $push: { courses: req.body.idC, coursesName: req.body.nm } }, (err, doc) => { 
       console.log("ID: "+doc._id)
       Course.findByIdAndUpdate(req.body.idC, { $push: { students: [doc._id] }},function(err, course){
-        console.log(course)
-        for(var i = 0; i<course.shedule.length; i++){
-          course.shedule[i].students.push(doc._id)
-          console.log(course.shedule[i])
-        }
         for(var j = 0; j<course.activities.length; j++){
           course.activities[j].grades.push([doc._id,null])
           console.log(course.activities[j])
