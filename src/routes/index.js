@@ -206,6 +206,59 @@ router.post('/importStudent', isAuthenticated, isAuthenticatedEmail, isComplete,
   res.render('importStudent',{ user })
 })
 
+
+router.get('/studentGrade', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  var courseName = ""
+  var actName = ""
+  var actividad = null
+  Course.findById(req.query.id, function (err, course) {
+        if (!course) {
+          req.flash('noUserMessage', 'No existe un curso')
+          return res.redirect('/courses')
+        }
+        courseName = course.name
+        for(var i = 0; i < course.activities.length ; i++){
+            if(course.activities[i]._id == req.query.Task){
+              actName = course.activities[i].title
+              actividad = course.activities[i]
+            }
+        }
+        STUDENT.find({idDocent: req.user._id }, function(err, students){
+          console.log("El nombre es: "+actividad.title)
+          res.render('studentGrades',{ user , course : course, activities: actividad, students})
+        })
+    })
+})
+
+router.post('/studentGrade', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  console.log(req.query.id)
+  console.log(req.query.task)
+  console.log(req.body)
+  var pos = null
+  Course.findById(req.query.id, function (err, course) {
+        for(var i = 0; i < course.activities.length ; i++){
+            if(course.activities[i]._id == req.query.task){
+              pos = i
+            }
+        }
+        console.log(course.activities[pos])
+        console.log(actividad["grades"].length)
+        for (var j = 0; j < course.activities[pos]["grades"].length; j++) {
+          console.log("req.body: "+req.body[course.activities[pos]["grades"][j][0].toString()])
+          console.log("student: "+course.activities[pos]["grades"][j][0].toString())
+          console.log("Actual: "+course.activities[pos]["grades"][j][1])
+          course.activities[pos]["grades"][j][1] = Number(req.body[course.activities[pos]["grades"][j][0].toString()])
+        }
+        console.log(course.activities[pos])
+
+        Course.findByIdAndUpdate(req.query.id, course, (err, doc) => {
+          res.redirect("/Courses")
+        })
+    })
+})
+
 router.get('/showCourse', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
   var courseName = ""

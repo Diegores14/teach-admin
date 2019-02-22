@@ -1,0 +1,44 @@
+<%- layout('layouts/session.ejs') %>
+
+	<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Edicion de notas</h2>
+					<p class="descReg"><%= course.name %></p>
+					<p class="descReg"><%= activities.title %></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<form id = "formulario" class="container" action="/studentGrade?id=<%=course._id%>&task=<%= activities._id %>" method="POST">
+			<% for(var i = 0; i < activities.grades.length ; i++){ %>
+				<% for(var j = 0; j < students.length ; j++){ %>
+					<% if(activities.grades[i][0].toString() == students[j]._id.toString()){ %>
+						<div class="row text-center">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group r">
+			          				<label class="StudentName"><%= students[i].firstName %> <%= students[i].lastName %></label>
+			        			</div>
+							</div>
+							<div class="col-md-6 col-sm-12">	
+								<div class="form-group l">
+									<input id = "percentage" name="<%=students[j]._id%>" class="form-control"  placeholder="Nota..." required>
+			        			</div>
+			        		</div>
+						</div>
+					<% } %>
+				<% } %>
+			<% } %>
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<button type="submit" class="btn btn-default r" formaction="/studentGrade?id=<%=course._id%>&task=<%= activities._id%>" formmethod="GET">Cancelar asignacion</button>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6"">
+					<button type="submit" class="btn btn-default l">Asignar notas</button>
+				</div>
+			</div>
+		</form>
+	</section>

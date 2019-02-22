@@ -23,6 +23,11 @@ section.curso .TextM{
 	margin-right: auto;
 }
 
+.StudentName{
+	font-size: 13px;
+	padding-top: 3%;
+}
+
 p.cod{
 	font-family: Montserrat;
 	font-style: normal;
