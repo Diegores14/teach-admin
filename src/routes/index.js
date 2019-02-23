@@ -115,6 +115,8 @@ router.get('/listStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (r
   })
 })
 
+
+
 router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
   var courseName = ""
@@ -131,7 +133,9 @@ router.get('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (re
 })
 
 router.post('/adminClass', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  console.log(req.body)
   req.body.date = Date(req.body.date)
+  console.log(req.body)
   Course.findByIdAndUpdate(req.query.id, { $push: {activities : req.body} }, (err, course) => {
     res.redirect('/courses')
   })
@@ -173,6 +177,19 @@ router.post('/importStudent', isAuthenticated, isAuthenticatedEmail, isComplete,
     })
   }
   res.render('importStudent',{ user })
+})
+
+router.get('/showCourse', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
+  const user = req.user
+  var courseName = ""
+  Course.findById(req.query.id, function (err, course) {
+        if (!course) {
+          req.flash('noUserMessage', 'No existe un curso')
+          return res.redirect('/courses')
+        }
+        courseName = course.name
+        res.render('showCourse',{ user , course : course})
+      })
 })
 
 

@@ -13,26 +13,31 @@
 
 	<section>
 		<div class="listaSTD panel panel-default">
-			<table class="table">
+			<table class="table" style="width: 100%">
 			  <thead>
 			    <tr>
-			      <th scope="col">#</th>
-			      <th scope="col">Nombres</th>
-			      <th scope="col">Apellidos</th>
-			      <th scope="col">Curso Matriculado</th>
+			      <th scope="col" class="text-center" style="width: 5%">#</th>
+			      <th scope="col" class="text-center" style="width: 30%">Nombres</th>
+			      <th scope="col" class="text-center" style="width: 30%">Apellidos</th>
+			      <th scope="col" class="text-center" style="width: 25%">Curso Matriculado</th>
+			      <th scope="col" class="text-center" style="width: 10%;">Ver</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 				<% for(var i = 0; i < students.length ; i++){ %>
 				    <tr>
-				      <th scope="row">1</th>
-				      <td><%= students[i].firstName %></td>
-				      <td><%= students[i].lastName %></td>
-				      <td>
+				      <th scope="row" style="width: 5%"><%= i %></th>
+				      <td style="width: 30%"><%= students[i].firstName %></td>
+				      <td style="width: 30%"><%= students[i].lastName %></td>
+				      <td style="width: 25%">
 				      	<% for(var j = 0; j < students[i].coursesName.length ; j++){ %>
 				      		<%= students[i].coursesName[j] %>
 						<% } %>
 				      </td>
+				      <th scope="row" style="width: 10%">
+				      	<a href="">
+				      	<span class="glyphicon glyphicon-edit edit"></span>
+				      </th>
 				    </tr>
 				<% } %>
 			  </tbody>

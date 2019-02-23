@@ -38,6 +38,28 @@ img.logoInf{
   -webkit-text-fill-color: transparent;
 }
 
+.edit{
+  margin-left: 30%;
+  background: -webkit-linear-gradient(left,#565656, #D7CEC7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.editA{
+  margin-left: 25%;
+  background: -webkit-linear-gradient(left,#565656, #D7CEC7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.assN{
+  margin-left: 45%;
+  background: -webkit-linear-gradient(left,#565656, #D7CEC7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 .navbar-list{
 	width: 10vw;
   	color: #565656;

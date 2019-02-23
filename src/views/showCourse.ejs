@@ -1,0 +1,53 @@
+<%- layout('layouts/session.ejs') %>
+
+	<section class="curso">
+		<div class="container">
+			<div class="row" style="text-align:center;">
+				<div class="col-md-12">
+					<h2>Lista de actividades</h2>
+					<p class="descReg">Curso <%= course.name %> </p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="listaSTD panel panel-default">
+			<table class="table" style="width: 100%">
+			  <thead>
+			    <tr>
+			      <th scope="col" style="width: 5%">#</th>
+			      <th scope="col" class="text-center" style="width: 40%">Nombre actividad</th>
+			      <th scope="col" class="text-center" style="width: 5%">Porcentaje</th>
+			      <th scope="col" class="text-center" style="width: 20%;">Fecha</th>
+			      <th scope="col" class="text-center" style="width: 15%;">Editar</th>
+			      <th scope="col" class="text-center" style="width: 15%; ">Asignar notas</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+		    		<% if(course.activities.length > 0){ %>
+		    			<% for(var i = 0; i < course.activities.length ; i++){ %>
+				    		<tr>
+								<th  scope="row" style="width: 5%"><%=i%></th>
+								<td class="text-center" style="width: 40%"> <%= course.activities[i].title %></td>
+								<td class="text-center" style="width: 5%"> <%= course.activities[i].percentage %></td>
+								<td class="text-center" style="width: 20%">
+								 <%= ("0"+(course.activities[i].date.getMonth()+1)).slice(-2)) +"/"+ (("0"+course.activities[i].date.getDate()).slice(-2)) +"/"+ (course.activities[i].date.getFullYear()) +" "+ (("0"+course.activities[i].date.getHours()+1).slice(-2)) +":"+ (("0"+course.activities[i].date.getMinutes()+1).slice(-2)
+								 %>
+								 	
+								 </td>
+								<th scope="row" style="width: 15%; padding-left: 4%;">
+									<a href="">
+									<span class="glyphicon glyphicon-edit editA"></span>
+								</th>
+								<th scope="row" style="width: 15%">
+									<a href="">
+									<span class="glyphicon glyphicon-list-alt assN"></span>
+								</th>
+				   			 </tr>
+						<% } %>
+		    		<% } %>
+			  </tbody>
+			</table>
+		</div>
+	</section>
