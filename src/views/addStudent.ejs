@@ -8,6 +8,7 @@
 				<h2>Matricular estudiantes</h2>
 				<p class="descReg">Docente <%= user.firstName%> <%= user.lastName%></p>
 				<p id="idCurso" hidden><%=id%></p>
+				<p id="name" hidden><%=name%></p>
 			</div>
 		</div>
 	</div>
@@ -70,7 +71,8 @@
 		$('#button').click( function () {
 			var datos = table.rows('.selected').data().toArray();
 			var idC = document.getElementById("idCurso").innerHTML;
-			 $.post('/addStudent',{data:datos, idC: idC}, function(data){
+			var nm = document.getElementById("name").innerHTML;
+			 $.post('/addStudent',{data:datos, idC: idC, nm : nm}, function(data){
 			 window.location.replace("/courses");
 		    });
 		   

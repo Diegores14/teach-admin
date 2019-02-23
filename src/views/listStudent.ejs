@@ -29,13 +29,9 @@
 				      <td><%= students[i].firstName %></td>
 				      <td><%= students[i].lastName %></td>
 				      <td>
-			      	 	<% course.forEach(function(crs){ %>
-			      	 		<% students[i].courses.forEach(function(scrs){ %>
-						      	<%if (crs._id == scrs) { %>
-						      		crc.name
-								<% } %>
-							<% }); %>
-						<% }); %>
+				      	<% for(var j = 0; j < students[i].coursesName.length ; j++){ %>
+				      		<%= students[i].coursesName[j] %>
+						<% } %>
 				      </td>
 				    </tr>
 				<% } %>

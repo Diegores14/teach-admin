@@ -89,14 +89,16 @@ router.get('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (re
   const user = req.user
   STUDENT.find({idDocent: req.user._id, courses : {$nin: [req.query.id]} }, function(err, students){
     console.log(students)
-    res.render('addStudent',{ user, students, id: req.query.id})
+    Course.findById(req.query.id,function(err, course){
+      console.log(course)
+      res.render('addStudent',{ user, students, id: req.query.id, name: course.name})
+    })
   })
 })
 
 router.post('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
-  console.log(req.body)
   req.body.data.forEach(function(std){
-    STUDENT.findOneAndUpdate({ Codigo: std[0] }, { $push: { courses: req.body.idC } }, (err, doc) => { 
+    STUDENT.findOneAndUpdate({ Codigo: std[0] }, { $push: { courses: req.body.idC, coursesName: req.body.nm } }, (err, doc) => { 
       console.log(doc._id)
       Course.findByIdAndUpdate(req.body.idC, { $push: { students: [doc._id] }},function(err, course){
       console.log(course)
@@ -109,10 +111,7 @@ router.post('/addStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (r
 router.get('/listStudent', isAuthenticated, isAuthenticatedEmail, isComplete, (req,res,next) => {
   const user = req.user
   STUDENT.find({idDocent: req.user._id }, function(err, students){
-    Course.find(function(err, course){
-      console.log(course)
-      res.render('listStudent',{ user, students, course})
-    })
+    res.render('listStudent',{ user, students })
   })
 })
 
